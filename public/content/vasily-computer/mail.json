@@ -1,0 +1,38 @@
+{
+  "id": "vasily-mail",
+  "ownerName": "Василий Кузнецов",
+  "accountAddress": "",
+  "folders": [
+    {
+      "id": "inbox",
+      "name": "Входящие",
+      "kind": "inbox",
+      "order": 1
+    },
+    {
+      "id": "sent",
+      "name": "Отправленные",
+      "kind": "sent",
+      "order": 2
+    },
+    {
+      "id": "drafts",
+      "name": "Черновики",
+      "kind": "drafts",
+      "order": 3
+    },
+    {
+      "id": "spam",
+      "name": "Спам",
+      "kind": "spam",
+      "order": 4
+    },
+    {
+      "id": "trash",
+      "name": "Корзина",
+      "kind": "trash",
+      "order": 5
+    }
+  ],
+  "messages": []
+}

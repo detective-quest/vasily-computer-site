@@ -1,0 +1,81 @@
+{
+  "id": "vasily-computer",
+  "driveLabel": "Системный диск",
+  "driveLetter": "C",
+  "systemName": "Персональный компьютер",
+  "snapshotDate": "—",
+  "snapshotTime": "—",
+  "capacityLabel": "—",
+  "freeSpaceLabel": "—",
+  "folders": [
+    {
+      "id": "documents",
+      "name": "Документы"
+    },
+    {
+      "id": "contracts",
+      "name": "Договоры",
+      "parentId": "documents"
+    },
+    {
+      "id": "audio",
+      "name": "Аудиозаписи",
+      "parentId": "documents"
+    },
+    {
+      "id": "miscellaneous",
+      "name": "Разное",
+      "parentId": "documents"
+    },
+    {
+      "id": "work",
+      "name": "Работа"
+    },
+    {
+      "id": "reports",
+      "name": "Отчёты",
+      "parentId": "work"
+    },
+    {
+      "id": "projects",
+      "name": "Проекты",
+      "parentId": "work"
+    },
+    {
+      "id": "personal",
+      "name": "Личное"
+    },
+    {
+      "id": "personal-documents",
+      "name": "Личные документы",
+      "parentId": "personal"
+    },
+    {
+      "id": "drafts",
+      "name": "Черновики",
+      "parentId": "personal"
+    },
+    {
+      "id": "events",
+      "name": "Мероприятия"
+    },
+    {
+      "id": "company-birthday",
+      "name": "День рождения компании",
+      "parentId": "events"
+    },
+    {
+      "id": "downloads",
+      "name": "Загрузки"
+    },
+    {
+      "id": "archive",
+      "name": "Архив"
+    },
+    {
+      "id": "trash",
+      "name": "Корзина"
+    }
+  ],
+  "files": []
+}

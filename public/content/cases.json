@@ -1,9 +1,9 @@
 {
-  "defaultCaseId": "igor-petrov",
+  "defaultCaseId": "vasily-computer",
   "cases": [
     {
-      "id": "igor-petrov",
-      "manifestPath": "content/igor-petrov/manifest.json",
+      "id": "vasily-computer",
+      "manifestPath": "content/vasily-computer/manifest.json",
       "enabled": true
     }
   ]

@@ -1,0 +1,53 @@
+{
+  "id": "vasily-computer",
+  "profile": {
+    "displayName": "Василий Кузнецов",
+    "password": "21151719",
+    "passwordHint": "8 цифр, семья, бумажка на столе"
+  },
+  "boot": {
+    "messages": [
+      "Запуск системы",
+      "Подготовка рабочего пространства",
+      "Загрузка профиля"
+    ]
+  },
+  "desktop": {
+    "wallpaper": {
+      "type": "gradient",
+      "preset": "noir"
+    },
+    "icons": [
+      {
+        "id": "documents",
+        "type": "folder",
+        "targetId": "documents",
+        "label": "Документы"
+      },
+      {
+        "id": "work",
+        "type": "folder",
+        "targetId": "work",
+        "label": "Работа"
+      },
+      {
+        "id": "personal",
+        "type": "folder",
+        "targetId": "personal",
+        "label": "Личное"
+      },
+      {
+        "id": "mail",
+        "type": "application",
+        "targetId": "mail",
+        "label": "Почта"
+      },
+      {
+        "id": "trash",
+        "type": "folder",
+        "targetId": "trash",
+        "label": "Корзина"
+      }
+    ]
+  }
+}
