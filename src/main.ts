@@ -1,13 +1,10 @@
 import './styles/variables.css'
 import './styles/global.css'
 import './styles/boot.css'
+import './styles/desktop.css'
 import './styles/layout.css'
 import './styles/states.css'
 import './styles/viewers.css'
-
-import {
-  createApp,
-} from './app/app'
 
 import {
   loadSystemConfig,
@@ -20,6 +17,10 @@ import {
 import {
   showBootScreen,
 } from './ui/boot-screen'
+
+import {
+  showDesktopScreen,
+} from './ui/desktop-screen'
 
 import {
   showLoginScreen,
@@ -93,7 +94,10 @@ async function startApplication(
       systemConfig,
     )
 
-    await createApp(root)
+    showDesktopScreen(
+      root,
+      systemConfig,
+    )
   } catch (error: unknown) {
     renderStartupError(
       root,
