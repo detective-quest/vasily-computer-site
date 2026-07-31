@@ -1,0 +1,653 @@
+{
+  "id": "igor-petrov",
+  "driveLabel": "PETROV_USB",
+  "driveLetter": "E",
+  "systemName": "NEXUS File System",
+  "snapshotDate": "13.12.2025",
+  "snapshotTime": "23:48",
+  "capacityLabel": "7,5 ГБ",
+  "freeSpaceLabel": "2,8 ГБ",
+  "folders": [
+    {
+      "id": "accounting",
+      "name": "Бухгалтерия"
+    },
+    {
+      "id": "scans",
+      "name": "Скан-копии"
+    },
+    {
+      "id": "work",
+      "name": "Рабочие документы"
+    },
+    {
+      "id": "drafts",
+      "name": "Черновики"
+    },
+    {
+      "id": "recorder",
+      "name": "Диктофон"
+    },
+    {
+      "id": "personal",
+      "name": "Личное"
+    },
+    {
+      "id": "archive",
+      "name": "Архив"
+    }
+  ],
+  "files": [
+    {
+      "id": "advance-report-october",
+      "folderId": "accounting",
+      "name": "авансовый_отчет_октябрь.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "184 КБ",
+      "createdAt": "04.11.2025, 09:18",
+      "modifiedAt": "04.11.2025, 09:18",
+      "status": "normal",
+      "description": "Рабочий бухгалтерский документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/background/avansovyy_otchet_oktyabr.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/background/avansovyy_otchet_oktyabr.pdf"
+      }
+    },
+    {
+      "id": "invoice-register-november",
+      "folderId": "accounting",
+      "name": "реестр_счетов_ноябрь.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "236 КБ",
+      "createdAt": "02.12.2025, 18:42",
+      "modifiedAt": "02.12.2025, 18:42",
+      "status": "normal",
+      "description": "Рабочий бухгалтерский документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/background/reestr_schetov_noyabr.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/background/reestr_schetov_noyabr.pdf"
+      }
+    },
+    {
+      "id": "payroll-november",
+      "folderId": "accounting",
+      "name": "зарплатная_ведомость_ноябрь.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "162 КБ",
+      "createdAt": "05.12.2025, 12:11",
+      "modifiedAt": "05.12.2025, 12:11",
+      "status": "normal",
+      "description": "Рабочий бухгалтерский документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/background/zarplatnaya_vedomost_noyabr.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/background/zarplatnaya_vedomost_noyabr.pdf"
+      }
+    },
+    {
+      "id": "officemarket-reconciliation",
+      "folderId": "accounting",
+      "name": "акт_сверки_офисмаркет.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "318 КБ",
+      "createdAt": "27.11.2025, 15:07",
+      "modifiedAt": "27.11.2025, 15:07",
+      "status": "normal",
+      "description": "Рабочий бухгалтерский документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/background/akt_sverki_ofismarket.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/background/akt_sverki_ofismarket.pdf"
+      }
+    },
+    {
+      "id": "business-trip-kazan",
+      "folderId": "accounting",
+      "name": "расчет_командировочных_казань.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "147 КБ",
+      "createdAt": "21.10.2025, 10:34",
+      "modifiedAt": "21.10.2025, 10:34",
+      "status": "normal",
+      "description": "Рабочий бухгалтерский документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/background/raschet_komandirovochnyh_kazan.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/background/raschet_komandirovochnyh_kazan.pdf"
+      }
+    },
+    {
+      "id": "draft-balance-q3",
+      "folderId": "accounting",
+      "name": "черновой_баланс_q3.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "201 КБ",
+      "createdAt": "14.10.2025, 22:16",
+      "modifiedAt": "14.10.2025, 22:16",
+      "status": "hidden",
+      "description": "Черновой бухгалтерский документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/background/chernovoy_balans_q3.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/background/chernovoy_balans_q3.pdf"
+      }
+    },
+    {
+      "id": "cashflow-2024",
+      "folderId": "accounting",
+      "name": "Движения средств на счетах 2024.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "1,8 МБ",
+      "createdAt": "06.12.2025, 21:13",
+      "modifiedAt": "06.12.2025, 23:09",
+      "status": "hidden",
+      "description": "Служебная таблица.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/previews/cashflow_2024.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/previews/cashflow_2024.pdf"
+      }
+    },
+    {
+      "id": "cashflow-2025",
+      "folderId": "accounting",
+      "name": "Движения средств на счетах 2025.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "2,1 МБ",
+      "createdAt": "07.12.2025, 00:18",
+      "modifiedAt": "07.12.2025, 01:04",
+      "status": "hidden",
+      "description": "Служебная таблица.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/previews/cashflow_2025.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/previews/cashflow_2025.pdf"
+      }
+    },
+    {
+      "id": "cash-withdrawals",
+      "folderId": "accounting",
+      "name": "Снятия наличных.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "816 КБ",
+      "createdAt": "08.12.2025, 19:45",
+      "modifiedAt": "08.12.2025, 20:12",
+      "status": "hidden",
+      "description": "Служебная таблица.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/accounting/previews/cash_withdrawals.pdf",
+        "downloadPath": "/content/igor-petrov/files/accounting/previews/cash_withdrawals.pdf"
+      }
+    },
+    {
+      "id": "scanner-warranty-card",
+      "folderId": "scans",
+      "name": "гарантийный_талон_сканер.jpg",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "842 КБ",
+      "createdAt": "19.08.2025, 16:05",
+      "modifiedAt": "19.08.2025, 16:05",
+      "status": "normal",
+      "description": "Сканированный гарантийный документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/scans/background/garantiynyy_talon_skaner.pdf",
+        "downloadPath": "/content/igor-petrov/files/scans/background/garantiynyy_talon_skaner.pdf"
+      }
+    },
+    {
+      "id": "postal-receipt-0711",
+      "folderId": "scans",
+      "name": "квитанция_почта_0711.jpg",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "516 КБ",
+      "createdAt": "07.11.2025, 19:23",
+      "modifiedAt": "07.11.2025, 19:23",
+      "status": "normal",
+      "description": "Сканированная почтовая квитанция.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/scans/background/kvitantsiya_pochta_0711.pdf",
+        "downloadPath": "/content/igor-petrov/files/scans/background/kvitantsiya_pochta_0711.pdf"
+      }
+    },
+    {
+      "id": "vacation-request-scan",
+      "folderId": "scans",
+      "name": "заявление_на_отпуск.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "403 КБ",
+      "createdAt": "12.06.2025, 11:48",
+      "modifiedAt": "12.06.2025, 11:48",
+      "status": "normal",
+      "description": "Сканированный кадровый документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/scans/background/zayavlenie_na_otpusk.pdf",
+        "downloadPath": "/content/igor-petrov/files/scans/background/zayavlenie_na_otpusk.pdf"
+      }
+    },
+    {
+      "id": "cleaning-contract-copy",
+      "folderId": "scans",
+      "name": "копия_договора_уборка.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "1,2 МБ",
+      "createdAt": "03.09.2025, 14:26",
+      "modifiedAt": "03.09.2025, 14:26",
+      "status": "hidden",
+      "description": "Сканированная копия рабочего договора.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/scans/background/kopiya_dogovora_uborka.pdf",
+        "downloadPath": "/content/igor-petrov/files/scans/background/kopiya_dogovora_uborka.pdf"
+      }
+    },
+    {
+      "id": "informer-people",
+      "folderId": "scans",
+      "name": "Данные информатора — люди.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "1,4 МБ",
+      "createdAt": "13.12.2025, 18:31",
+      "modifiedAt": "13.12.2025, 19:06",
+      "status": "hidden",
+      "description": "Служебная таблица.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/scans/previews/informer_people.pdf",
+        "downloadPath": "/content/igor-petrov/files/scans/previews/informer_people.pdf"
+      }
+    },
+    {
+      "id": "informer-transport",
+      "folderId": "scans",
+      "name": "Данные информатора — транспорт.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "986 КБ",
+      "createdAt": "13.12.2025, 18:33",
+      "modifiedAt": "13.12.2025, 19:08",
+      "status": "hidden",
+      "description": "Служебная таблица.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/scans/previews/informer_transport.pdf",
+        "downloadPath": "/content/igor-petrov/files/scans/previews/informer_transport.pdf"
+      }
+    },
+    {
+      "id": "archive-schedule-2025",
+      "folderId": "work",
+      "name": "график_архивации_2025.docx",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "96 КБ",
+      "createdAt": "15.01.2025, 08:42",
+      "modifiedAt": "15.01.2025, 08:52",
+      "status": "normal",
+      "description": "Обычный рабочий документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/work/background/grafik_arhivatsii_2025.pdf",
+        "downloadPath": "/content/igor-petrov/files/work/background/grafik_arhivatsii_2025.pdf"
+      }
+    },
+    {
+      "id": "december-tasks",
+      "folderId": "work",
+      "name": "задачи_на_декабрь.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "12 КБ",
+      "createdAt": "30.11.2025, 20:18",
+      "modifiedAt": "01.12.2025, 08:14",
+      "status": "normal",
+      "description": "Обычная рабочая заметка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/work/background/zadachi_na_dekabr.pdf",
+        "downloadPath": "/content/igor-petrov/files/work/background/zadachi_na_dekabr.pdf"
+      }
+    },
+    {
+      "id": "file-naming-guide",
+      "folderId": "work",
+      "name": "инструкция_по_именованию_файлов.docx",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "88 КБ",
+      "createdAt": "18.02.2025, 13:12",
+      "modifiedAt": "18.02.2025, 13:47",
+      "status": "normal",
+      "description": "Внутренняя рабочая инструкция.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/work/background/instruktsiya_po_imenovaniyu_faylov.pdf",
+        "downloadPath": "/content/igor-petrov/files/work/background/instruktsiya_po_imenovaniyu_faylov.pdf"
+      }
+    },
+    {
+      "id": "counterparty-letter-template",
+      "folderId": "work",
+      "name": "шаблон_письма_контрагенту.docx",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "74 КБ",
+      "createdAt": "06.03.2025, 16:44",
+      "modifiedAt": "06.03.2025, 17:09",
+      "status": "normal",
+      "description": "Пустой рабочий шаблон.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/work/background/shablon_pisma_kontragentu.pdf",
+        "downloadPath": "/content/igor-petrov/files/work/background/shablon_pisma_kontragentu.pdf"
+      }
+    },
+    {
+      "id": "stationery-list",
+      "folderId": "work",
+      "name": "перечень_канцелярии.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "132 КБ",
+      "createdAt": "27.08.2025, 17:35",
+      "modifiedAt": "28.08.2025, 10:28",
+      "status": "normal",
+      "description": "Рабочая таблица.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/work/background/perechen_kantselyarii.pdf",
+        "downloadPath": "/content/igor-petrov/files/work/background/perechen_kantselyarii.pdf"
+      }
+    },
+    {
+      "id": "backup-memo",
+      "folderId": "work",
+      "name": "резервное_копирование.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "8 КБ",
+      "createdAt": "30.11.2025, 22:51",
+      "modifiedAt": "30.11.2025, 23:04",
+      "status": "hidden",
+      "description": "Краткая рабочая памятка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/work/background/rezervnoe_kopirovanie.pdf",
+        "downloadPath": "/content/igor-petrov/files/work/background/rezervnoe_kopirovanie.pdf"
+      }
+    },
+    {
+      "id": "igor-notes",
+      "folderId": "drafts",
+      "name": "notes_2.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "428 КБ",
+      "createdAt": "06.12.2025, 22:41",
+      "modifiedAt": "13.12.2025, 23:37",
+      "status": "hidden",
+      "description": "Личный документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/drafts/notes_2.pdf",
+        "downloadPath": "/content/igor-petrov/files/drafts/notes_2.pdf"
+      }
+    },
+    {
+      "id": "support-letter-draft",
+      "folderId": "drafts",
+      "name": "письмо_в_техподдержку_черновик.docx",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "61 КБ",
+      "createdAt": "09.12.2025, 18:08",
+      "modifiedAt": "09.12.2025, 18:31",
+      "status": "normal",
+      "description": "Незавершённый рабочий текст.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/drafts/background/pismo_v_tehpodderzhku_chernovik.pdf",
+        "downloadPath": "/content/igor-petrov/files/drafts/background/pismo_v_tehpodderzhku_chernovik.pdf"
+      }
+    },
+    {
+      "id": "meeting-questions",
+      "folderId": "drafts",
+      "name": "вопросы_к_совещанию.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "14 КБ",
+      "createdAt": "10.12.2025, 07:41",
+      "modifiedAt": "10.12.2025, 07:56",
+      "status": "normal",
+      "description": "Черновая рабочая заметка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/drafts/background/voprosy_k_soveshchaniyu.pdf",
+        "downloadPath": "/content/igor-petrov/files/drafts/background/voprosy_k_soveshchaniyu.pdf"
+      }
+    },
+    {
+      "id": "printer-note",
+      "folderId": "drafts",
+      "name": "заметка_про_принтер.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "7 КБ",
+      "createdAt": "11.12.2025, 19:58",
+      "modifiedAt": "11.12.2025, 20:02",
+      "status": "hidden",
+      "description": "Короткая личная заметка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/drafts/background/zametka_pro_printer.pdf",
+        "downloadPath": "/content/igor-petrov/files/drafts/background/zametka_pro_printer.pdf"
+      }
+    },
+    {
+      "id": "conversation-record",
+      "folderId": "recorder",
+      "name": "REC_20251207_2148.mp3",
+      "kind": "audio",
+      "mimeType": "audio/mpeg",
+      "sizeLabel": "4211 КБ",
+      "createdAt": "07.12.2025, 21:48",
+      "modifiedAt": "07.12.2025, 21:52",
+      "status": "hidden",
+      "description": "Аудиозапись диктофона.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/audio/rec_20251207_2148.mp3",
+        "downloadPath": "/content/igor-petrov/files/audio/rec_20251207_2148.mp3",
+        "transcriptPath": "/content/igor-petrov/files/transcripts/rec_20251207_2148_transcript.pdf"
+      }
+    },
+    {
+      "id": "broken-record",
+      "folderId": "recorder",
+      "name": "REC_20251118_0912.mp3",
+      "kind": "audio",
+      "mimeType": "audio/mpeg",
+      "sizeLabel": "2,3 МБ",
+      "createdAt": "18.11.2025, 09:12",
+      "modifiedAt": "18.11.2025, 09:13",
+      "status": "corrupted",
+      "description": "Файл не удалось прочитать.",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "personal-shopping-list",
+      "folderId": "personal",
+      "name": "список_покупок.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "5 КБ",
+      "createdAt": "12.12.2025, 19:37",
+      "modifiedAt": "12.12.2025, 19:44",
+      "status": "normal",
+      "description": "Личная заметка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/personal/background/spisok_pokupok.pdf",
+        "downloadPath": "/content/igor-petrov/files/personal/background/spisok_pokupok.pdf"
+      }
+    },
+    {
+      "id": "reading-list",
+      "folderId": "personal",
+      "name": "книги_на_прочитать.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "9 КБ",
+      "createdAt": "17.09.2025, 20:56",
+      "modifiedAt": "17.09.2025, 21:10",
+      "status": "normal",
+      "description": "Личная заметка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/personal/background/knigi_na_prochitat.pdf",
+        "downloadPath": "/content/igor-petrov/files/personal/background/knigi_na_prochitat.pdf"
+      }
+    },
+    {
+      "id": "charlotte-recipe",
+      "folderId": "personal",
+      "name": "рецепт_шарлотки.docx",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "71 КБ",
+      "createdAt": "03.10.2025, 18:02",
+      "modifiedAt": "03.10.2025, 18:25",
+      "status": "normal",
+      "description": "Личный документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/personal/background/retsept_sharlotki.pdf",
+        "downloadPath": "/content/igor-petrov/files/personal/background/retsept_sharlotki.pdf"
+      }
+    },
+    {
+      "id": "train-tickets",
+      "folderId": "personal",
+      "name": "билеты_на_поезд.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "284 КБ",
+      "createdAt": "22.11.2025, 13:58",
+      "modifiedAt": "22.11.2025, 14:03",
+      "status": "normal",
+      "description": "Личный документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/personal/background/bilety_na_poezd.pdf",
+        "downloadPath": "/content/igor-petrov/files/personal/background/bilety_na_poezd.pdf"
+      }
+    },
+    {
+      "id": "new-year-gifts",
+      "folderId": "personal",
+      "name": "подарки_к_новому_году.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "6 КБ",
+      "createdAt": "08.12.2025, 22:06",
+      "modifiedAt": "08.12.2025, 22:18",
+      "status": "hidden",
+      "description": "Личная заметка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/personal/background/podarki_k_novomu_godu.pdf",
+        "downloadPath": "/content/igor-petrov/files/personal/background/podarki_k_novomu_godu.pdf"
+      }
+    },
+    {
+      "id": "report-2023",
+      "folderId": "archive",
+      "name": "отчет_за_2023.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "624 КБ",
+      "createdAt": "15.01.2024, 11:17",
+      "modifiedAt": "15.01.2024, 11:32",
+      "status": "normal",
+      "description": "Старый рабочий документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/archive/background/otchet_za_2023.pdf",
+        "downloadPath": "/content/igor-petrov/files/archive/background/otchet_za_2023.pdf"
+      }
+    },
+    {
+      "id": "accounting-policy-2024",
+      "folderId": "archive",
+      "name": "учетная_политика_2024.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "488 КБ",
+      "createdAt": "09.01.2024, 08:54",
+      "modifiedAt": "09.01.2024, 09:12",
+      "status": "normal",
+      "description": "Архивный рабочий документ.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/archive/background/uchetnaya_politika_2024.pdf",
+        "downloadPath": "/content/igor-petrov/files/archive/background/uchetnaya_politika_2024.pdf"
+      }
+    },
+    {
+      "id": "old-invoice-template",
+      "folderId": "archive",
+      "name": "старый_шаблон_счета.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "93 КБ",
+      "createdAt": "18.04.2023, 16:40",
+      "modifiedAt": "18.04.2023, 16:40",
+      "status": "normal",
+      "description": "Старый пустой шаблон.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/archive/background/staryy_shablon_scheta.pdf",
+        "downloadPath": "/content/igor-petrov/files/archive/background/staryy_shablon_scheta.pdf"
+      }
+    },
+    {
+      "id": "office-repair-correspondence",
+      "folderId": "archive",
+      "name": "переписка_по_ремонту_офиса.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "552 КБ",
+      "createdAt": "20.05.2024, 09:14",
+      "modifiedAt": "27.05.2024, 13:29",
+      "status": "hidden",
+      "description": "Архивная переписка.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "/content/igor-petrov/files/archive/background/perepiska_po_remontu_ofisa.pdf",
+        "downloadPath": "/content/igor-petrov/files/archive/background/perepiska_po_remontu_ofisa.pdf"
+      }
+    }
+  ]
+}

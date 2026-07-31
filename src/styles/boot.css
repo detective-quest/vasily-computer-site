@@ -1,0 +1,429 @@
+.boot-desktop {
+  min-height: 100vh;
+  padding: 24px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgb(39 47 50 / 28%) 0,
+      transparent 62%
+    ),
+    #07090a;
+}
+
+.boot-screen {
+  position: relative;
+
+  width: min(570px, 100%);
+
+  overflow: hidden;
+
+  background: var(--color-panel);
+  border:
+    1px
+    solid
+    var(--color-border);
+
+  box-shadow:
+    0 28px 90px rgb(0 0 0 / 72%);
+}
+
+.boot-screen::after {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+  content: "";
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 3px,
+      rgb(255 255 255 / 1.5%) 4px
+    );
+
+  opacity: 0.5;
+}
+
+.boot-screen__header {
+  min-height: 40px;
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #1b2023 0%,
+      #121618 100%
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(--color-border);
+
+  color: var(--color-text-muted);
+  font-family: var(--font-system);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.boot-screen__status-light {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 auto;
+
+  background: var(--color-success);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 9px
+    rgb(126 157 135 / 65%);
+}
+
+.boot-screen__content {
+  position: relative;
+  z-index: 1;
+
+  min-height: 470px;
+  padding: 36px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boot-screen__device-icon {
+  width: 88px;
+  height: 68px;
+  margin-bottom: 24px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #30383c 0%,
+      #20272a 100%
+    );
+
+  border:
+    1px
+    solid
+    #4c585d;
+
+  box-shadow:
+    inset 0 0 0 3px
+    rgb(0 0 0 / 20%);
+
+  color: var(--color-text-muted);
+  font-family: var(--font-system);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.boot-screen__device-icon::after {
+  width: 26px;
+  height: 8px;
+  margin-top: 68px;
+
+  position: absolute;
+
+  background: #252c2f;
+  border:
+    1px
+    solid
+    #465156;
+
+  content: "";
+}
+
+.boot-screen__eyebrow {
+  margin: 0 0 9px;
+
+  color: var(--color-text-dark);
+  font-family: var(--font-system);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.boot-screen__title {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.boot-screen__device-name {
+  margin-top: 14px;
+
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+
+  font-family: var(--font-system);
+}
+
+.boot-screen__device-name strong {
+  color: var(--color-text);
+  font-size: 17px;
+}
+
+.boot-screen__device-name span {
+  color: var(--color-text-dark);
+  font-size: 13px;
+}
+
+.boot-progress {
+  width: 100%;
+  margin-top: 34px;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    44px;
+  align-items: center;
+  gap: 12px;
+}
+
+.boot-progress__track {
+  height: 13px;
+  padding: 2px;
+
+  overflow: hidden;
+
+  background: #080a0b;
+  border:
+    1px
+    solid
+    var(--color-border);
+}
+
+.boot-progress__fill {
+  width: 0;
+  height: 100%;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #657d75 0,
+      #657d75 8px,
+      #53675f 8px,
+      #53675f 11px
+    );
+
+  transition:
+    width
+    360ms
+    ease;
+}
+
+.boot-progress__value {
+  color: var(--color-text-muted);
+  font-family: var(--font-system);
+  font-size: 11px;
+  text-align: right;
+}
+
+.boot-screen__message {
+  min-height: 18px;
+  margin: 13px 0 0;
+
+  align-self: flex-start;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-system);
+  font-size: 11px;
+}
+
+.boot-summary {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+
+  background: #0c0f10;
+  border:
+    1px
+    solid
+    var(--color-border-soft);
+}
+
+.boot-summary h2 {
+  margin: 0 0 12px;
+
+  color: var(--color-text);
+  font-family: var(--font-system);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.boot-summary__list {
+  margin: 0;
+}
+
+.boot-summary__list div {
+  min-height: 29px;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+  align-items: center;
+  gap: 18px;
+
+  border-bottom:
+    1px
+    solid
+    var(--color-border-soft);
+
+  font-size: 12px;
+}
+
+.boot-summary__list div:last-child {
+  border-bottom: 0;
+}
+
+.boot-summary__list dt {
+  color: var(--color-text-dark);
+}
+
+.boot-summary__list dd {
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-system);
+}
+
+.boot-screen__actions {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 28px;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.boot-button {
+  min-height: 39px;
+  padding: 0 17px;
+
+  border-radius: 2px;
+
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.boot-button--primary {
+  background: var(--color-accent-soft);
+  border:
+    1px
+    solid
+    #536860;
+
+  color: var(--color-text);
+}
+
+.boot-button--primary:hover {
+  background: #40514b;
+}
+
+.boot-button--secondary {
+  background: var(--color-panel-raised);
+  border:
+    1px
+    solid
+    var(--color-border);
+
+  color: var(--color-text-muted);
+}
+
+.boot-button--secondary:hover {
+  background: #252b2e;
+  color: var(--color-text);
+}
+
+.boot-screen__footer {
+  min-height: 34px;
+  padding: 0 13px;
+
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  background: #101416;
+  border-top:
+    1px
+    solid
+    var(--color-border);
+
+  color: var(--color-text-dark);
+  font-family: var(--font-system);
+  font-size: 10px;
+}
+
+@media (max-width: 600px) {
+  .boot-desktop {
+    padding: 0;
+  }
+
+  .boot-screen {
+    width: 100%;
+    min-height: 100dvh;
+
+    display: grid;
+    grid-template-rows:
+      40px
+      minmax(0, 1fr)
+      34px;
+
+    border: 0;
+  }
+
+  .boot-screen__content {
+    min-height: 0;
+    padding: 28px 18px;
+  }
+
+  .boot-screen__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .boot-button {
+    width: 100%;
+  }
+
+  .boot-screen__footer {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .boot-screen__footer span:first-child {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-progress__fill {
+    transition: none;
+  }
+}
