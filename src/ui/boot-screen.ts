@@ -1,49 +1,24 @@
-import { loadDefaultCase } from '../cases/case-loader'
+import type {
+  SystemConfig,
+} from '../core/types/system'
 
-import { escapeHtml } from '../core/utilities/html'
+import {
+  escapeHtml,
+} from '../core/utilities/html'
 
 const BOOT_STORAGE_KEY =
-  'petrov-usb-site:boot-completed:v1'
+  'vasily-computer:boot-completed:v1'
 
-const NORMAL_STEP_DELAY_MS = 650
-const REDUCED_MOTION_STEP_DELAY_MS = 180
+const NORMAL_STEP_DELAY_MS = 620
+const REDUCED_MOTION_STEP_DELAY_MS = 120
 
-interface BootStep {
-  progress: number
-  message: string
-}
+const NORMAL_FINISH_DELAY_MS = 420
+const REDUCED_MOTION_FINISH_DELAY_MS = 80
 
-const bootSteps: BootStep[] = [
-  {
-    progress: 8,
-    message: 'Подключение устройства...',
-  },
-  {
-    progress: 23,
-    message: 'Чтение таблицы разделов...',
-  },
-  {
-    progress: 41,
-    message: 'Проверка файловой системы...',
-  },
-  {
-    progress: 63,
-    message: 'Поиск скрытых элементов...',
-  },
-  {
-    progress: 82,
-    message: 'Проверка целостности файлов...',
-  },
-  {
-    progress: 100,
-    message: 'Проверка завершена.',
-  },
-]
-
-function wasBootCompleted(): boolean {
+function readBootCompletion(): boolean {
   try {
     return (
-      window.localStorage.getItem(
+      window.sessionStorage.getItem(
         BOOT_STORAGE_KEY,
       ) === 'true'
     )
@@ -54,15 +29,12 @@ function wasBootCompleted(): boolean {
 
 function saveBootCompletion(): void {
   try {
-    window.localStorage.setItem(
+    window.sessionStorage.setItem(
       BOOT_STORAGE_KEY,
       'true',
     )
   } catch {
-    /*
-     * Сайт продолжит работать,
-     * даже если localStorage недоступен.
-     */
+    // Сайт продолжит работать без sessionStorage.
   }
 }
 
@@ -75,215 +47,84 @@ function shouldForceBoot(): boolean {
   return parameters.get('boot') === '1'
 }
 
+function wait(
+  delayMs: number,
+): Promise<void> {
+  return new Promise((resolve) => {
+    window.setTimeout(
+      resolve,
+      delayMs,
+    )
+  })
+}
+
 export async function showBootScreen(
   root: HTMLDivElement,
+  config: SystemConfig,
 ): Promise<void> {
-  const forceBoot = shouldForceBoot()
-
   if (
-    wasBootCompleted() &&
-    !forceBoot
+    readBootCompletion() &&
+    !shouldForceBoot()
   ) {
     return
   }
 
-  let manifest
-
-  try {
-    manifest = await loadDefaultCase()
-  } catch {
-    /*
-     * Ошибку загрузки покажет
-     * основной модуль приложения.
-     */
-    return
-  }
-
-  const hiddenFilesCount =
-    manifest.files.filter(
-      (file) =>
-        file.status === 'hidden',
-    ).length
-
-  const corruptedFilesCount =
-    manifest.files.filter(
-      (file) =>
-        file.status === 'corrupted',
-    ).length
-
-  const totalFilesCount =
-    manifest.files.length
+  const messages = config.boot.messages
 
   root.innerHTML = `
-    <main class="boot-desktop">
+    <main
+      class="
+        system-stage
+        system-stage--boot
+      "
+    >
       <section
-        class="boot-screen"
-        aria-label="Подключение съёмного накопителя"
+        class="computer-boot"
+        aria-label="Запуск компьютера"
       >
-        <header class="boot-screen__header">
-          <span
-            class="boot-screen__status-light"
-            aria-hidden="true"
-          ></span>
-
-          <span>
-            ${escapeHtml(
-              manifest.systemName,
-            )}
-          </span>
-        </header>
-
-        <div class="boot-screen__content">
-          <div
-            class="boot-screen__device-icon"
-            aria-hidden="true"
-          >
-            <span>USB</span>
-          </div>
-
-          <p class="boot-screen__eyebrow">
-            Обнаружено новое устройство
-          </p>
-
-          <h1 class="boot-screen__title">
-            Съёмный накопитель
-          </h1>
-
-          <div class="boot-screen__device-name">
-            <strong>
-              ${escapeHtml(
-                manifest.driveLabel,
-              )}
-            </strong>
-
-            <span>
-              ${escapeHtml(
-                manifest.driveLetter,
-              )}:
-            </span>
-          </div>
-
-          <div
-            class="boot-progress"
-            role="progressbar"
-            aria-label="Проверка накопителя"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="0"
-          >
-            <div class="boot-progress__track">
-              <div
-                class="boot-progress__fill"
-                data-boot-progress-fill
-              ></div>
-            </div>
-
-            <span
-              class="boot-progress__value"
-              data-boot-progress-value
-            >
-              0%
-            </span>
-          </div>
-
-          <p
-            class="boot-screen__message"
-            data-boot-message
-            aria-live="polite"
-          >
-            Подготовка проверки...
-          </p>
-
-          <section
-            class="boot-summary"
-            data-boot-summary
-            hidden
-          >
-            <h2>
-              Проверка завершена
-            </h2>
-
-            <dl class="boot-summary__list">
-              <div>
-                <dt>
-                  Файловая система
-                </dt>
-
-                <dd>
-                  Исправна
-                </dd>
-              </div>
-
-              <div>
-                <dt>
-                  Объектов найдено
-                </dt>
-
-                <dd>
-                  ${totalFilesCount}
-                </dd>
-              </div>
-
-              <div>
-                <dt>
-                  Скрытых объектов
-                </dt>
-
-                <dd>
-                  ${hiddenFilesCount}
-                </dd>
-              </div>
-
-              <div>
-                <dt>
-                  Повреждённых файлов
-                </dt>
-
-                <dd>
-                  ${corruptedFilesCount}
-                </dd>
-              </div>
-            </dl>
-          </section>
-
-          <div class="boot-screen__actions">
-            <button
-              class="
-                boot-button
-                boot-button--secondary
-              "
-              type="button"
-              data-boot-skip
-            >
-              Пропустить проверку
-            </button>
-
-            <button
-              class="
-                boot-button
-                boot-button--primary
-              "
-              type="button"
-              data-boot-open
-              hidden
-            >
-              Открыть накопитель
-            </button>
-          </div>
+        <div
+          class="computer-boot__mark"
+          aria-hidden="true"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
-        <footer class="boot-screen__footer">
-          <span>
-            Устройство:
-            ${escapeHtml(
-              manifest.driveLabel,
-            )}
-          </span>
+        <h1 class="computer-boot__title">
+          ${escapeHtml(
+            config.profile.displayName,
+          )}
+        </h1>
 
-          <span>
-            Состояние: подключено
-          </span>
-        </footer>
+        <p class="computer-boot__subtitle">
+          Персональный компьютер
+        </p>
+
+        <div
+          class="computer-boot__progress"
+          role="progressbar"
+          aria-label="Загрузка системы"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div
+            class="computer-boot__progress-fill"
+            data-boot-progress
+          ></div>
+        </div>
+
+        <p
+          class="computer-boot__message"
+          data-boot-message
+          aria-live="polite"
+        >
+          ${escapeHtml(
+            messages[0] ??
+              'Запуск системы',
+          )}
+        </p>
       </section>
     </main>
   `
@@ -295,12 +136,7 @@ export async function showBootScreen(
 
   const progressFill =
     root.querySelector<HTMLElement>(
-      '[data-boot-progress-fill]',
-    )
-
-  const progressValue =
-    root.querySelector<HTMLElement>(
-      '[data-boot-progress-value]',
+      '[data-boot-progress]',
     )
 
   const messageElement =
@@ -308,31 +144,14 @@ export async function showBootScreen(
       '[data-boot-message]',
     )
 
-  const summaryElement =
-    root.querySelector<HTMLElement>(
-      '[data-boot-summary]',
-    )
-
-  const skipButton =
-    root.querySelector<HTMLButtonElement>(
-      '[data-boot-skip]',
-    )
-
-  const openButton =
-    root.querySelector<HTMLButtonElement>(
-      '[data-boot-open]',
-    )
-
   if (
     !progressElement ||
     !progressFill ||
-    !progressValue ||
-    !messageElement ||
-    !summaryElement ||
-    !skipButton ||
-    !openButton
+    !messageElement
   ) {
-    return
+    throw new Error(
+      'Не удалось создать загрузочный экран.',
+    )
   }
 
   const reducedMotion =
@@ -345,78 +164,38 @@ export async function showBootScreen(
       ? REDUCED_MOTION_STEP_DELAY_MS
       : NORMAL_STEP_DELAY_MS
 
-  await new Promise<void>((resolve) => {
-    let currentStepIndex = 0
-    let timerId: number | null = null
-    let isCompleted = false
+  const finishDelay =
+    reducedMotion
+      ? REDUCED_MOTION_FINISH_DELAY_MS
+      : NORMAL_FINISH_DELAY_MS
 
-    const finishBoot = (): void => {
-      if (isCompleted) {
-        return
-      }
+  for (
+    let index = 0;
+    index < messages.length;
+    index += 1
+  ) {
+    const message = messages[index]
 
-      isCompleted = true
-
-      if (timerId !== null) {
-        window.clearTimeout(timerId)
-      }
-
-      saveBootCompletion()
-      resolve()
-    }
-
-    const showNextStep = (): void => {
-      const step =
-        bootSteps[currentStepIndex]
-
-      if (!step) {
-        summaryElement.hidden = false
-        openButton.hidden = false
-        skipButton.hidden = true
-
-        openButton.focus()
-
-        return
-      }
-
-      progressFill.style.width =
-        `${step.progress}%`
-
-      progressValue.textContent =
-        `${step.progress}%`
-
-      progressElement.setAttribute(
-        'aria-valuenow',
-        String(step.progress),
-      )
-
-      messageElement.textContent =
-        step.message
-
-      currentStepIndex += 1
-
-      timerId = window.setTimeout(
-        showNextStep,
-        stepDelay,
-      )
-    }
-
-    skipButton.addEventListener(
-      'click',
-      finishBoot,
-      {
-        once: true,
-      },
+    const progress = Math.round(
+      ((index + 1) / messages.length) *
+        100,
     )
 
-    openButton.addEventListener(
-      'click',
-      finishBoot,
-      {
-        once: true,
-      },
+    messageElement.textContent =
+      message
+
+    progressFill.style.width =
+      `${progress}%`
+
+    progressElement.setAttribute(
+      'aria-valuenow',
+      String(progress),
     )
 
-    showNextStep()
-  })
+    await wait(stepDelay)
+  }
+
+  saveBootCompletion()
+
+  await wait(finishDelay)
 }
