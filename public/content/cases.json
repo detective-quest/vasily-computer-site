@@ -3,7 +3,7 @@
   "cases": [
     {
       "id": "igor-petrov",
-      "manifestPath": "/content/igor-petrov/manifest.json",
+      "manifestPath": "content/igor-petrov/manifest.json",
       "enabled": true
     }
   ]

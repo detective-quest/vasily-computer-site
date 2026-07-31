@@ -3,20 +3,29 @@ import type {
   CaseManifest,
 } from '../core/types/case'
 
+import {
+  resolvePublicPath,
+} from '../core/utilities/public-path'
+
 let defaultCasePromise:
-  | Promise<CaseManifest>
-  | null = null
+  Promise<CaseManifest> | null = null
 
 async function fetchJson<T>(
   path: string,
 ): Promise<T> {
-  const response = await fetch(path, {
-    cache: 'no-store',
-  })
+  const requestPath =
+    resolvePublicPath(path)
+
+  const response = await fetch(
+    requestPath,
+    {
+      cache: 'no-store',
+    },
+  )
 
   if (!response.ok) {
     throw new Error(
-      `Не удалось загрузить ${path}. Код ответа: ${response.status}.`,
+      `Не удалось загрузить ${requestPath}. Код ответа: ${response.status}.`,
     )
   }
 
@@ -51,11 +60,50 @@ function validateManifest(
   }
 }
 
+function resolveManifestPaths(
+  manifest: CaseManifest,
+): CaseManifest {
+  return {
+    ...manifest,
+
+    files: manifest.files.map(
+      (file) => ({
+        ...file,
+
+        source: {
+          ...file.source,
+
+          previewPath:
+            file.source.previewPath
+              ? resolvePublicPath(
+                  file.source.previewPath,
+                )
+              : undefined,
+
+          downloadPath:
+            file.source.downloadPath
+              ? resolvePublicPath(
+                  file.source.downloadPath,
+                )
+              : undefined,
+
+          transcriptPath:
+            file.source.transcriptPath
+              ? resolvePublicPath(
+                  file.source.transcriptPath,
+                )
+              : undefined,
+        },
+      }),
+    ),
+  }
+}
+
 async function loadDefaultCaseFromFiles():
   Promise<CaseManifest> {
   const catalog =
     await fetchJson<CaseCatalog>(
-      '/content/cases.json',
+      'content/cases.json',
     )
 
   validateCatalog(catalog)
@@ -81,7 +129,7 @@ async function loadDefaultCaseFromFiles():
 
   validateManifest(manifest)
 
-  return manifest
+  return resolveManifestPaths(manifest)
 }
 
 export function loadDefaultCase():
@@ -91,6 +139,7 @@ export function loadDefaultCase():
       loadDefaultCaseFromFiles().catch(
         (error: unknown) => {
           defaultCasePromise = null
+
           throw error
         },
       )
