@@ -992,3 +992,589 @@
       repeat(2, minmax(0, 1fr));
   }
 }
+/* =========================================================
+   Финальная читаемость почты и отдельный экран письма
+   ========================================================= */
+
+/*
+ * На компьютере больше не держим пустую
+ * третью колонку для просмотра письма.
+ *
+ * Основной экран состоит из:
+ * 1. папок почты;
+ * 2. широкого списка писем.
+ */
+.mail-layout {
+  position: relative;
+
+  grid-template-columns:
+    230px
+    minmax(0, 1fr);
+}
+
+/*
+ * Список писем занимает всю доступную
+ * ширину справа от папок.
+ */
+.mail-list {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/*
+ * Область чтения по умолчанию скрыта.
+ * Она появляется только после выбора письма
+ * и перекрывает весь основной экран почты.
+ */
+.mail-reader {
+  display: none;
+
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+
+  overflow: auto;
+}
+
+.mail-window--reading
+.mail-reader {
+  display: block;
+}
+
+/*
+ * Кнопка возврата теперь используется
+ * не только на телефоне, но и на компьютере.
+ */
+.mail-reader__mobile-header {
+  min-height: 54px;
+  padding: 9px 15px;
+
+  position: sticky;
+  top: 0;
+  z-index: 8;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(218 226 223 / 98%),
+      rgb(202 214 210 / 98%)
+    );
+
+  border-bottom:
+    1px solid #aebfbb;
+
+  box-shadow:
+    0 5px 14px
+    rgb(38 60 58 / 13%);
+}
+
+.mail-reader__mobile-header button {
+  min-height: 36px;
+  padding: 7px 13px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c6d9d5,
+      #afc7c2
+    );
+
+  border:
+    1px solid #99b3ad;
+
+  border-radius: 8px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 55%),
+    0 2px 0
+      #91aaa5;
+
+  color: #354f4c;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.mail-reader__mobile-header button:hover {
+  filter: brightness(1.04);
+}
+
+.mail-reader__mobile-header button:active {
+  transform: translateY(2px);
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 38%);
+}
+
+/* =========================================================
+   Верхняя панель почты
+   ========================================================= */
+
+.mail-toolbar__brand strong {
+  font-size: 14px;
+}
+
+.mail-search input {
+  font-size: 12px;
+}
+
+.mail-account strong {
+  font-size: 11px;
+}
+
+.mail-account small {
+  font-size: 9px;
+}
+
+/* =========================================================
+   Папки почты
+   ========================================================= */
+
+.mail-folders {
+  padding: 16px 12px;
+}
+
+.mail-folder {
+  min-height: 50px;
+  padding: 7px 10px;
+
+  grid-template-columns:
+    32px
+    minmax(0, 1fr)
+    auto;
+
+  gap: 9px;
+
+  font-size: 12px;
+}
+
+.mail-folder__icon {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+}
+
+.mail-folder__name {
+  font-weight: 550;
+}
+
+.mail-folder__count {
+  font-size: 10px;
+}
+
+.mail-folder__unread {
+  min-width: 25px;
+  padding: 4px 7px;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   Широкий список писем
+   ========================================================= */
+
+.mail-list {
+  grid-template-rows:
+    48px
+    minmax(0, 1fr);
+}
+
+.mail-list__header {
+  padding: 0 18px;
+}
+
+.mail-list__header strong {
+  font-size: 12px;
+}
+
+.mail-list__header span {
+  font-size: 10px;
+}
+
+.mail-message {
+  min-height: 112px;
+  padding: 16px 19px;
+
+  gap: 7px;
+}
+
+.mail-message--unread {
+  border-left-width: 4px;
+}
+
+.mail-message__top {
+  align-items: center;
+  gap: 14px;
+}
+
+.mail-message__top strong {
+  font-size: 13px;
+}
+
+.mail-message__top time {
+  font-size: 10px;
+}
+
+.mail-message__subject {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.mail-message__preview {
+  max-width: 900px;
+
+  font-size: 11px;
+  line-height: 1.55;
+
+  -webkit-line-clamp: 2;
+}
+
+.mail-message__attachment {
+  font-size: 9px;
+}
+
+/* =========================================================
+   Полный экран чтения письма
+   ========================================================= */
+
+.mail-letter {
+  width: min(940px, 100%);
+  min-height: calc(100% - 54px);
+  margin: 0 auto;
+  padding: 50px 62px 65px;
+}
+
+.mail-letter__label {
+  font-size: 10px;
+}
+
+.mail-letter h1 {
+  margin-top: 13px;
+
+  font-size: 30px;
+  line-height: 1.24;
+}
+
+.mail-letter__details {
+  margin-top: 29px;
+  padding: 18px 0;
+
+  gap: 13px;
+}
+
+.mail-letter__details div {
+  grid-template-columns:
+    68px
+    minmax(0, 1fr);
+
+  gap: 13px;
+}
+
+.mail-letter__details dt {
+  font-size: 10px;
+}
+
+.mail-letter__details dd {
+  gap: 7px;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.mail-letter__body {
+  margin-top: 34px;
+}
+
+.mail-letter__body p {
+  font-size: 14px;
+  line-height: 1.78;
+}
+
+.mail-letter__body p + p {
+  margin-top: 18px;
+}
+
+.mail-letter__attachments {
+  margin-top: 35px;
+}
+
+.mail-letter__attachments h2 {
+  font-size: 13px;
+}
+
+.mail-attachment {
+  min-height: 46px;
+  padding: 12px 14px;
+}
+
+.mail-attachment strong {
+  font-size: 11px;
+}
+
+/* =========================================================
+   Планшеты
+   ========================================================= */
+
+@media (max-width: 820px) {
+  .mail-layout {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr);
+  }
+
+  .mail-folder {
+    min-height: 47px;
+
+    font-size: 11px;
+  }
+
+  .mail-message {
+    min-height: 105px;
+    padding: 14px 16px;
+  }
+
+  .mail-message__top strong {
+    font-size: 12px;
+  }
+
+  .mail-message__top time {
+    font-size: 9px;
+  }
+
+  .mail-message__subject {
+    font-size: 12px;
+  }
+
+  .mail-message__preview {
+    font-size: 10px;
+  }
+
+  .mail-letter {
+    padding:
+      40px
+      40px
+      55px;
+  }
+
+  .mail-letter h1 {
+    font-size: 27px;
+  }
+
+  .mail-letter__body p {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   Телефоны
+   ========================================================= */
+
+@media (max-width: 620px) {
+  .mail-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto
+      minmax(0, 1fr);
+  }
+
+  .mail-folders {
+    padding: 8px;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+    gap: 6px;
+  }
+
+  .mail-folder {
+    min-height: 39px;
+    padding: 5px 7px;
+
+    grid-template-columns:
+      25px
+      minmax(0, 1fr);
+
+    gap: 6px;
+
+    font-size: 10px;
+  }
+
+  .mail-folder__icon {
+    width: 24px;
+    height: 24px;
+
+    font-size: 11px;
+  }
+
+  .mail-list {
+    grid-column: 1;
+    grid-row: 2;
+
+    grid-template-rows:
+      42px
+      minmax(0, 1fr);
+  }
+
+  .mail-list__header {
+    padding: 0 12px;
+  }
+
+  .mail-list__header strong {
+    font-size: 11px;
+  }
+
+  .mail-list__header span {
+    font-size: 9px;
+  }
+
+  .mail-message {
+    min-height: 100px;
+    padding: 13px 14px;
+
+    gap: 6px;
+  }
+
+  .mail-message__top strong {
+    font-size: 12px;
+  }
+
+  .mail-message__top time {
+    font-size: 9px;
+  }
+
+  .mail-message__subject {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .mail-message__preview {
+    font-size: 9.5px;
+    line-height: 1.5;
+  }
+
+  .mail-message__attachment {
+    font-size: 8px;
+  }
+
+  /*
+   * На телефоне письмо также перекрывает
+   * весь экран списка и папок.
+   */
+  .mail-reader {
+    position: absolute;
+    inset: 0;
+  }
+
+  .mail-reader__mobile-header {
+    min-height: 48px;
+    padding: 7px 10px;
+  }
+
+  .mail-reader__mobile-header button {
+    min-height: 34px;
+    padding: 6px 10px;
+
+    font-size: 10px;
+  }
+
+  .mail-letter {
+    width: 100%;
+    min-height: calc(100% - 48px);
+    padding:
+      28px
+      22px
+      42px;
+  }
+
+  .mail-letter__label {
+    font-size: 9px;
+  }
+
+  .mail-letter h1 {
+    font-size: 23px;
+  }
+
+  .mail-letter__details {
+    margin-top: 23px;
+    padding: 14px 0;
+  }
+
+  .mail-letter__details div {
+    grid-template-columns:
+      54px
+      minmax(0, 1fr);
+
+    gap: 8px;
+  }
+
+  .mail-letter__details dt {
+    font-size: 9px;
+  }
+
+  .mail-letter__details dd {
+    font-size: 10px;
+  }
+
+  .mail-letter__body {
+    margin-top: 25px;
+  }
+
+  .mail-letter__body p {
+    font-size: 12.5px;
+    line-height: 1.72;
+  }
+
+  .mail-letter__body p + p {
+    margin-top: 15px;
+  }
+
+  .mail-attachment strong {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  .mail-folders {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .mail-folder {
+    font-size: 10px;
+  }
+
+  .mail-message__top {
+    align-items: flex-start;
+  }
+
+  .mail-message__top time {
+    max-width: 92px;
+
+    text-align: right;
+  }
+
+  .mail-letter {
+    padding:
+      24px
+      18px
+      38px;
+  }
+
+  .mail-letter h1 {
+    font-size: 21px;
+  }
+}
