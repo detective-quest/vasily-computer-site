@@ -4,6 +4,7 @@ import './styles/boot.css'
 import './styles/desktop.css'
 import './styles/file-manager.css'
 import './styles/document-viewer.css'
+import './styles/mail.css'
 import './styles/layout.css'
 import './styles/states.css'
 import './styles/viewers.css'
@@ -15,6 +16,10 @@ import {
 import {
   loadDocumentCatalog,
 } from './cases/document-loader'
+
+import {
+  loadMailCatalog,
+} from './cases/mail-loader'
 
 import {
   loadSystemConfig,
@@ -43,6 +48,10 @@ import {
 import {
   showLoginScreen,
 } from './ui/login-screen'
+
+import {
+  attachMailApp,
+} from './ui/mail-app'
 
 const appElement =
   document.querySelector<HTMLDivElement>(
@@ -103,10 +112,12 @@ async function startApplication(
       systemConfig,
       manifest,
       documentCatalog,
+      mailCatalog,
     ] = await Promise.all([
       loadSystemConfig(),
       loadDefaultCase(),
       loadDocumentCatalog(),
+      loadMailCatalog(),
     ])
 
     await showBootScreen(
@@ -133,6 +144,11 @@ async function startApplication(
       root,
       manifest,
       documentCatalog,
+    )
+
+    attachMailApp(
+      root,
+      mailCatalog,
     )
   } catch (error: unknown) {
     renderStartupError(
