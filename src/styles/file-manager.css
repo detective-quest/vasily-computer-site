@@ -1357,3 +1357,174 @@
       );
   }
 }
+/* =========================================================
+   Единый размер текста в файловом менеджере
+   ========================================================= */
+
+:root {
+  --file-manager-text-size: 11px;
+  --file-manager-meta-size: 9px;
+  --file-manager-text-line-height: 1.4;
+}
+
+/* Названия папок и файлов в основной области */
+
+[data-file-manager-folder] strong,
+[data-file-manager-file] strong,
+[data-file-manager-folder] [class*="name"],
+[data-file-manager-file] [class*="name"],
+[data-file-manager-folder] [class*="title"],
+[data-file-manager-file] [class*="title"] {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  font-weight: 650 !important;
+
+  line-height:
+    var(--file-manager-text-line-height)
+    !important;
+}
+
+/* Количество элементов, размер и дата */
+
+[data-file-manager-folder] small,
+[data-file-manager-file] small,
+[data-file-manager-folder] [class*="meta"],
+[data-file-manager-file] [class*="meta"],
+[data-file-manager-folder] [class*="details"],
+[data-file-manager-file] [class*="details"] {
+  font-size:
+    var(--file-manager-meta-size)
+    !important;
+
+  line-height: 1.35 !important;
+  opacity: 0.92;
+}
+
+/* Левая навигационная панель */
+
+.file-manager-sidebar,
+.file-manager-sidebar button,
+.file-manager-sidebar a,
+.file-manager-sidebar [role="treeitem"],
+.file-manager-navigation,
+.file-manager-navigation button,
+.file-manager-navigation a,
+.file-manager-navigation [role="treeitem"],
+[class*="file-manager-sidebar"] button,
+[class*="file-manager-navigation"] button {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  line-height:
+    var(--file-manager-text-line-height)
+    !important;
+}
+
+/* Пункт «Этот компьютер» */
+
+[data-file-manager-computer],
+[data-file-manager-root],
+.file-manager-sidebar__computer,
+.file-manager-navigation__computer,
+[class*="computer-location"],
+[class*="computer-item"] {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  line-height:
+    var(--file-manager-text-line-height)
+    !important;
+}
+
+/* Строка пути в верхней панели */
+
+.file-manager-address,
+.file-manager-address-bar,
+.file-manager-path,
+.file-manager-location,
+.file-manager-breadcrumbs,
+.file-manager-breadcrumbs button,
+.file-manager-breadcrumbs a,
+[data-file-manager-path],
+[data-file-manager-address],
+[data-file-manager-breadcrumbs],
+[data-file-manager-breadcrumbs] button {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  line-height:
+    var(--file-manager-text-line-height)
+    !important;
+}
+
+/* Поле поиска */
+
+.file-manager-search,
+.file-manager-search input,
+.file-manager-search-field,
+.file-manager-search-field input,
+[data-file-manager-search],
+[data-file-manager-search] input,
+input[placeholder*="Поиск"] {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  line-height:
+    var(--file-manager-text-line-height)
+    !important;
+}
+
+/* Размер текста подсказки внутри поиска */
+
+.file-manager-search input::placeholder,
+.file-manager-search-field input::placeholder,
+[data-file-manager-search] input::placeholder,
+input[placeholder*="Поиск"]::placeholder {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  opacity: 0.78;
+}
+
+/* Промежуточная строка пути под верхней панелью */
+
+.file-manager-breadcrumb-row,
+.file-manager-location-row,
+.file-manager-content-path,
+[class*="breadcrumb"] {
+  font-size:
+    var(--file-manager-text-size)
+    !important;
+
+  line-height:
+    var(--file-manager-text-line-height)
+    !important;
+}
+
+/* Нижняя строка состояния */
+
+.file-manager-statusbar,
+.file-manager-status,
+[data-file-manager-status] {
+  font-size:
+    var(--file-manager-meta-size)
+    !important;
+
+  line-height: 1.35 !important;
+}
+
+/* На телефоне сохраняем те же пропорции */
+
+@media (max-width: 820px) {
+  :root {
+    --file-manager-text-size: 11px;
+    --file-manager-meta-size: 9px;
+  }
+}

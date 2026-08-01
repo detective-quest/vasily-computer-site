@@ -442,6 +442,57 @@
                                      "previewPath":  "content/vasily-computer/files/personal/will.pdf",
                                      "downloadPath":  "content/vasily-computer/files/personal/will.pdf"
                                  }
+                  },
+                  {
+                      "id":  "recording-001",
+                      "folderId":  "audio",
+                      "name":  "REC_001.mp3",
+                      "kind":  "audio",
+                      "mimeType":  "audio/mpeg",
+                      "sizeLabel":  "2013 КБ",
+                      "createdAt":  "—",
+                      "modifiedAt":  "—",
+                      "status":  "normal",
+                      "description":  "Аудиозапись MP3.",
+                      "source":  {
+                                     "provider":  "pages",
+                                     "previewPath":  "content/vasily-computer/files/audio/REC_001.mp3",
+                                     "downloadPath":  "content/vasily-computer/files/audio/REC_001.mp3"
+                                 }
+                  },
+                  {
+                      "id":  "recording-002",
+                      "folderId":  "audio",
+                      "name":  "REC_002.mp3",
+                      "kind":  "audio",
+                      "mimeType":  "audio/mpeg",
+                      "sizeLabel":  "1984 КБ",
+                      "createdAt":  "—",
+                      "modifiedAt":  "—",
+                      "status":  "normal",
+                      "description":  "Аудиозапись MP3.",
+                      "source":  {
+                                     "provider":  "pages",
+                                     "previewPath":  "content/vasily-computer/files/audio/REC_002.mp3",
+                                     "downloadPath":  "content/vasily-computer/files/audio/REC_002.mp3"
+                                 }
+                  },
+                  {
+                      "id":  "recording-003",
+                      "folderId":  "audio",
+                      "name":  "REC_003.mp3",
+                      "kind":  "audio",
+                      "mimeType":  "audio/mpeg",
+                      "sizeLabel":  "1771 КБ",
+                      "createdAt":  "—",
+                      "modifiedAt":  "—",
+                      "status":  "normal",
+                      "description":  "Аудиозапись MP3.",
+                      "source":  {
+                                     "provider":  "pages",
+                                     "previewPath":  "content/vasily-computer/files/audio/REC_003.mp3",
+                                     "downloadPath":  "content/vasily-computer/files/audio/REC_003.mp3"
+                                 }
                   }
               ]
 }
