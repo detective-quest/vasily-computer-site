@@ -1,3 +1,4 @@
+
 import type {
   CaseFile,
   CaseFolder,
@@ -90,6 +91,168 @@ function getFolderFiles(
         'ru-RU',
       ),
     )
+}
+
+function getSearchScopeFolderIds(
+  manifest: CaseManifest,
+  folderId: string,
+): Set<string> {
+  const result =
+    new Set<string>()
+
+  const pendingFolderIds =
+    folderId === ROOT_FOLDER_ID
+      ? getChildFolders(
+          manifest,
+          ROOT_FOLDER_ID,
+        ).map((folder) =>
+          folder.id,
+        )
+      : [folderId]
+
+  while (pendingFolderIds.length > 0) {
+    const nextFolderId =
+      pendingFolderIds.shift()
+
+    if (
+      !nextFolderId ||
+      result.has(nextFolderId)
+    ) {
+      continue
+    }
+
+    result.add(nextFolderId)
+
+    const childFolderIds =
+      getChildFolders(
+        manifest,
+        nextFolderId,
+      ).map((folder) =>
+        folder.id,
+      )
+
+    pendingFolderIds.push(
+      ...childFolderIds,
+    )
+  }
+
+  return result
+}
+
+function getSearchFolders(
+  manifest: CaseManifest,
+  folderId: string,
+  searchQuery: string,
+): CaseFolder[] {
+  const scopeFolderIds =
+    getSearchScopeFolderIds(
+      manifest,
+      folderId,
+    )
+
+  return manifest.folders
+    .filter((folder) => {
+      if (
+        folder.id === folderId ||
+        !scopeFolderIds.has(folder.id)
+      ) {
+        return false
+      }
+
+      return folder.name
+        .toLocaleLowerCase('ru-RU')
+        .includes(searchQuery)
+    })
+    .sort((left, right) => {
+      const nameComparison =
+        left.name.localeCompare(
+          right.name,
+          'ru-RU',
+        )
+
+      if (nameComparison !== 0) {
+        return nameComparison
+      }
+
+      return left.id.localeCompare(
+        right.id,
+        'ru-RU',
+      )
+    })
+}
+
+function getSearchFiles(
+  manifest: CaseManifest,
+  folderId: string,
+  searchQuery: string,
+): CaseFile[] {
+  const scopeFolderIds =
+    getSearchScopeFolderIds(
+      manifest,
+      folderId,
+    )
+
+  return manifest.files
+    .filter((file) =>
+      scopeFolderIds.has(
+        file.folderId,
+      ) &&
+      file.name
+        .toLocaleLowerCase('ru-RU')
+        .includes(searchQuery),
+    )
+    .sort((left, right) => {
+      const nameComparison =
+        left.name.localeCompare(
+          right.name,
+          'ru-RU',
+        )
+
+      if (nameComparison !== 0) {
+        return nameComparison
+      }
+
+      return left.folderId.localeCompare(
+        right.folderId,
+        'ru-RU',
+      )
+    })
+}
+
+function getFolderLocationLabel(
+  manifest: CaseManifest,
+  folderId: string,
+): string {
+  const pathLabels =
+    getFolderPath(
+      manifest,
+      folderId,
+    )
+      .slice(1)
+      .map((pathFolderId) =>
+        getFolderLabel(
+          manifest,
+          pathFolderId,
+        ),
+      )
+
+  return pathLabels.length > 0
+    ? pathLabels.join(' › ')
+    : 'Этот компьютер'
+}
+
+function getFolderParentLocationLabel(
+  manifest: CaseManifest,
+  folder: CaseFolder,
+): string {
+  if (!folder.parentId) {
+    return 'Этот компьютер'
+  }
+
+  return getFolderLocationLabel(
+    manifest,
+    folder.parentId,
+  )
 }
 
 function getFolderParentId(
@@ -556,6 +719,7 @@ function renderSidebar(
 function renderFolderCard(
   manifest: CaseManifest,
   folder: CaseFolder,
+  detailText?: string,
 ): string {
   const tone =
     getFolderTone(
@@ -577,6 +741,14 @@ function renderFolderCard(
 
   const totalCount =
     childCount + fileCount
+
+  const resolvedDetailText =
+    detailText ??
+    (
+      totalCount === 0
+        ? 'Папка'
+        : `Элементов: ${totalCount}`
+    )
 
   return `
     <button
@@ -608,11 +780,9 @@ function renderFolderCard(
         </strong>
 
         <small>
-          ${
-            totalCount === 0
-              ? 'Папка'
-              : `Элементов: ${totalCount}`
-          }
+          ${escapeHtml(
+            resolvedDetailText,
+          )}
         </small>
       </span>
     </button>
@@ -621,7 +791,12 @@ function renderFolderCard(
 
 function renderFileCard(
   file: CaseFile,
+  detailText?: string,
 ): string {
+  const resolvedDetailText =
+    detailText ??
+    file.sizeLabel
+
   return `
     <button
       class="
@@ -655,7 +830,9 @@ function renderFileCard(
         </strong>
 
         <small>
-          ${escapeHtml(file.sizeLabel)}
+          ${escapeHtml(
+            resolvedDetailText,
+          )}
         </small>
       </span>
     </button>
@@ -859,25 +1036,32 @@ export function attachFileManager(
           .trim()
           .toLocaleLowerCase('ru-RU')
 
+      const isSearching =
+        searchQuery.length > 0
+
       const folders =
-        getChildFolders(
-          manifest,
-          currentFolderId,
-        ).filter((folder) =>
-          folder.name
-            .toLocaleLowerCase('ru-RU')
-            .includes(searchQuery),
-        )
+        isSearching
+          ? getSearchFolders(
+              manifest,
+              currentFolderId,
+              searchQuery,
+            )
+          : getChildFolders(
+              manifest,
+              currentFolderId,
+            )
 
       const files =
-        getFolderFiles(
-          manifest,
-          currentFolderId,
-        ).filter((file) =>
-          file.name
-            .toLocaleLowerCase('ru-RU')
-            .includes(searchQuery),
-        )
+        isSearching
+          ? getSearchFiles(
+              manifest,
+              currentFolderId,
+              searchQuery,
+            )
+          : getFolderFiles(
+              manifest,
+              currentFolderId,
+            )
 
       elements.title.textContent =
         `Файловый менеджер — ${folderLabel}`
@@ -924,7 +1108,7 @@ export function attachFileManager(
               aria-hidden="true"
             >
               ${
-                searchQuery
+                isSearching
                   ? '⌕'
                   : '□'
               }
@@ -932,7 +1116,7 @@ export function attachFileManager(
 
             <strong>
               ${
-                searchQuery
+                isSearching
                   ? 'Ничего не найдено'
                   : 'Папка пока пустая'
               }
@@ -940,8 +1124,8 @@ export function attachFileManager(
 
             <span>
               ${
-                searchQuery
-                  ? 'Измените поисковый запрос.'
+                isSearching
+                  ? 'Совпадений в этой папке и вложенных папках нет.'
                   : 'Файлы будут добавлены на следующем этапе.'
               }
             </span>
@@ -959,12 +1143,28 @@ export function attachFileManager(
                 renderFolderCard(
                   manifest,
                   folder,
+                  isSearching
+                    ? getFolderParentLocationLabel(
+                        manifest,
+                        folder,
+                      )
+                    : undefined,
                 ),
               )
               .join('')}
 
             ${files
-              .map(renderFileCard)
+              .map((file) =>
+                renderFileCard(
+                  file,
+                  isSearching
+                    ? `${getFolderLocationLabel(
+                        manifest,
+                        file.folderId,
+                      )} · ${file.sizeLabel}`
+                    : undefined,
+                ),
+              )
               .join('')}
           </div>
         `
@@ -975,7 +1175,7 @@ export function attachFileManager(
         files.length
 
       elements.status.textContent =
-        searchQuery
+        isSearching
           ? `Найдено элементов: ${itemCount}`
           : `Папок: ${folders.length} · Файлов: ${files.length}`
 
@@ -1183,8 +1383,8 @@ export function attachFileManager(
             <input
               type="search"
               autocomplete="off"
-              placeholder="Поиск в папке"
-              aria-label="Поиск в текущей папке"
+              placeholder="Поиск в папке и внутри"
+              aria-label="Поиск в текущей папке и вложенных папках"
               data-file-manager-search
             />
           </label>
