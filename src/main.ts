@@ -3,6 +3,7 @@ import './styles/global.css'
 import './styles/boot.css'
 import './styles/desktop.css'
 import './styles/file-manager.css'
+import './styles/document-viewer.css'
 import './styles/layout.css'
 import './styles/states.css'
 import './styles/viewers.css'
@@ -10,6 +11,10 @@ import './styles/viewers.css'
 import {
   loadDefaultCase,
 } from './cases/case-loader'
+
+import {
+  loadDocumentCatalog,
+} from './cases/document-loader'
 
 import {
   loadSystemConfig,
@@ -26,6 +31,10 @@ import {
 import {
   showDesktopScreen,
 } from './ui/desktop-screen'
+
+import {
+  attachDocumentViewer,
+} from './ui/document-viewer'
 
 import {
   attachFileManager,
@@ -93,9 +102,11 @@ async function startApplication(
     const [
       systemConfig,
       manifest,
+      documentCatalog,
     ] = await Promise.all([
       loadSystemConfig(),
       loadDefaultCase(),
+      loadDocumentCatalog(),
     ])
 
     await showBootScreen(
@@ -116,6 +127,12 @@ async function startApplication(
     attachFileManager(
       root,
       manifest,
+    )
+
+    attachDocumentViewer(
+      root,
+      manifest,
+      documentCatalog,
     )
   } catch (error: unknown) {
     renderStartupError(
