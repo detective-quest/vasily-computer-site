@@ -4,6 +4,7 @@ import './styles/boot.css'
 import './styles/desktop.css'
 import './styles/file-manager.css'
 import './styles/document-viewer.css'
+import './styles/real-pdf-viewer.css'
 import './styles/mail.css'
 import './styles/mail-attachments.css'
 import './styles/layout.css'
@@ -57,6 +58,10 @@ import {
 import {
   attachMailAttachmentBridge,
 } from './ui/mail-attachment-bridge'
+
+import {
+  attachRealPdfViewer,
+} from './ui/real-pdf-viewer'
 
 const appElement =
   document.querySelector<HTMLDivElement>(
@@ -141,6 +146,19 @@ async function startApplication(
     )
 
     attachFileManager(
+      root,
+      manifest,
+    )
+
+    /*
+     * Настоящие PDF подключаем раньше
+     * виртуального просмотрщика.
+     *
+     * Благодаря этому provider: pages
+     * открывается как PDF, а фоновые файлы
+     * продолжают открываться по-старому.
+     */
+    attachRealPdfViewer(
       root,
       manifest,
     )

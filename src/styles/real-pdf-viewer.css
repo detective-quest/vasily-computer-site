@@ -1,0 +1,252 @@
+.real-pdf-window {
+  z-index: 58;
+}
+
+/*
+ * Верхняя правая подпись повторяет
+ * оформление фонового просмотрщика.
+ */
+.real-document-toolbar__label {
+  color: #8299a5;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/*
+ * Внутри больше нет iframe и встроенного
+ * браузерного PDF-приложения.
+ *
+ * Это обычная прокручиваемая область,
+ * как у фоновых документов.
+ */
+.real-pdf-body {
+  min-height: 0;
+  padding:
+    30px
+    24px
+    48px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background:
+    radial-gradient(
+      circle at 82% 4%,
+      rgb(68 126 154 / 9%),
+      transparent 31%
+    ),
+    #142938;
+
+  scrollbar-color:
+    #8b8d8c
+    #2e302f;
+
+  scrollbar-width: auto;
+}
+
+.real-pdf-body::-webkit-scrollbar {
+  width: 13px;
+}
+
+.real-pdf-body::-webkit-scrollbar-track {
+  background: #2e302f;
+
+  border-left:
+    1px solid
+    rgb(255 255 255 / 7%);
+}
+
+.real-pdf-body::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      180deg,
+      #a4a5a3,
+      #7f817f
+    );
+
+  border:
+    2px solid
+    #2e302f;
+
+  border-radius: 8px;
+}
+
+.real-document-pages {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.real-document-page {
+  width:
+    min(
+      720px,
+      calc(100% - 52px)
+    );
+
+  min-height: 300px;
+  margin: 0;
+
+  position: relative;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  background: #eeede6;
+
+  border:
+    1px solid
+    rgb(255 255 255 / 14%);
+
+  border-radius: 1px;
+
+  box-shadow:
+    0 1px 0
+      rgb(255 255 255 / 12%),
+    0 12px 28px
+      rgb(0 0 0 / 26%);
+}
+
+.real-document-page__image {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  opacity: 0;
+
+  transition:
+    opacity
+    140ms
+    ease;
+}
+
+.real-document-page--loaded
+.real-document-page__image {
+  opacity: 1;
+}
+
+.real-document-page__loading,
+.real-document-page__error {
+  min-height: 230px;
+  padding: 25px;
+
+  display: grid;
+  place-items: center;
+
+  color: #6e7779;
+  font-size: 11px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.real-document-page__error {
+  color: #66564f;
+}
+
+/*
+ * Убираем выделение и перетаскивание
+ * страниц как обычных изображений.
+ */
+.real-document-page img {
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+/*
+ * В развёрнутом окне страница остаётся
+ * той же ширины, что и у фоновых файлов.
+ * Она не растягивается на весь монитор.
+ */
+.document-viewer-window--maximized
+.real-document-page {
+  width:
+    min(
+      760px,
+      calc(100% - 70px)
+    );
+}
+
+@media (max-width: 820px) {
+  .real-pdf-body {
+    padding:
+      20px
+      12px
+      35px;
+  }
+
+  .real-document-pages {
+    gap: 17px;
+  }
+
+  .real-document-page {
+    width:
+      min(
+        700px,
+        calc(100% - 18px)
+      );
+
+    min-height: 230px;
+  }
+
+  .document-viewer-window--maximized
+  .real-document-page {
+    width:
+      min(
+        700px,
+        calc(100% - 18px)
+      );
+  }
+}
+
+@media (max-width: 560px) {
+  .real-pdf-body {
+    padding:
+      12px
+      4px
+      27px;
+  }
+
+  .real-document-pages {
+    gap: 11px;
+  }
+
+  .real-document-page,
+  .document-viewer-window--maximized
+  .real-document-page {
+    width:
+      calc(100% - 8px);
+
+    min-height: 180px;
+  }
+
+  .real-document-page__loading,
+  .real-document-page__error {
+    min-height: 170px;
+    padding: 18px;
+
+    font-size: 10px;
+  }
+
+  .real-document-toolbar__label {
+    font-size: 7px;
+  }
+}
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .real-document-page__image {
+    transition: none;
+  }
+}
