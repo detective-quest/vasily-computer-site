@@ -1,0 +1,1359 @@
+.file-manager-window {
+  width: min(1120px, calc(100vw - 90px));
+  height: min(720px, calc(100vh - 130px));
+  height: min(720px, calc(100svh - 130px));
+
+  min-width: 720px;
+  min-height: 460px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+
+  display: grid;
+  grid-template-rows:
+    62px
+    64px
+    39px
+    minmax(0, 1fr)
+    31px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgb(39 59 76 / 98%),
+      rgb(20 37 51 / 99%)
+    );
+
+  border:
+    1px solid
+    rgb(153 199 222 / 31%);
+
+  border-radius: 17px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 12%),
+    0 12px 0
+      rgb(8 22 33 / 52%),
+    0 38px 100px
+      rgb(0 0 0 / 58%);
+
+  color: #dce8ee;
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    file-manager-window-appear
+    180ms
+    ease-out;
+}
+
+.file-manager-window[hidden] {
+  display: none;
+}
+
+.file-manager-window--maximized {
+  width: auto;
+  height: auto;
+
+  min-width: 0;
+  min-height: 0;
+
+  top: 12px;
+  right: 12px;
+  bottom: 80px;
+  left: 12px;
+
+  transform: none;
+}
+
+.file-manager-titlebar {
+  min-width: 0;
+  padding: 0 10px 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(66 94 116 / 94%),
+      rgb(39 67 87 / 97%)
+    );
+
+  border-bottom:
+    1px solid
+    rgb(157 200 222 / 20%);
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 12%);
+}
+
+.file-manager-titlebar__identity {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-manager-titlebar__icon {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+}
+
+.file-manager-titlebar__icon
+.file-manager-folder-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.file-manager-titlebar__identity > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.file-manager-titlebar__identity strong {
+  overflow: hidden;
+
+  color: #edf5f8;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-manager-titlebar__identity span {
+  color: #91a8b5;
+  font-size: 8px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.file-manager-titlebar__controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.file-manager-titlebar__controls button {
+  width: 38px;
+  height: 35px;
+  padding: 0;
+  margin-bottom: 3px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(91 116 134 / 90%),
+      rgb(55 81 101 / 94%)
+    );
+
+  border:
+    1px solid
+    rgb(184 213 227 / 17%);
+
+  border-radius: 8px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 13%),
+    0 3px 0
+      rgb(18 39 54 / 75%);
+
+  color: #cfdee5;
+  cursor: pointer;
+  font-size: 17px;
+
+  transition:
+    filter 120ms ease,
+    transform 90ms ease,
+    box-shadow 90ms ease;
+}
+
+.file-manager-titlebar__controls button:hover {
+  filter: brightness(1.13);
+}
+
+.file-manager-titlebar__controls button:active {
+  transform: translateY(2px);
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 9%),
+    0 1px 0
+      rgb(18 39 54 / 75%);
+}
+
+.file-manager-titlebar__controls
+.file-manager-titlebar__close:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #9f6870,
+      #70474e
+    );
+}
+
+.file-manager-control-square {
+  width: 11px;
+  height: 11px;
+
+  display: block;
+
+  border:
+    1.5px solid
+    currentColor;
+
+  border-radius: 2px;
+}
+
+.file-manager-toolbar {
+  min-width: 0;
+  padding: 10px 13px;
+
+  display: grid;
+  grid-template-columns:
+    auto
+    minmax(180px, 1fr)
+    minmax(160px, 260px);
+
+  align-items: center;
+  gap: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(34 55 72 / 97%),
+      rgb(27 46 61 / 98%)
+    );
+
+  border-bottom:
+    1px solid
+    rgb(255 255 255 / 6%);
+}
+
+.file-manager-toolbar__navigation {
+  display: flex;
+  gap: 5px;
+}
+
+.file-manager-toolbar__navigation button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin-bottom: 2px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(72 97 116 / 82%),
+      rgb(43 68 86 / 91%)
+    );
+
+  border:
+    1px solid
+    rgb(149 190 211 / 15%);
+
+  border-radius: 8px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 10%),
+    0 2px 0
+      rgb(15 32 44 / 75%);
+
+  color: #bfd0d8;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.file-manager-toolbar__navigation button:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.file-manager-toolbar__navigation button:disabled {
+  cursor: default;
+  opacity: 0.34;
+}
+
+.file-manager-address,
+.file-manager-search {
+  min-width: 0;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(11 24 34 / 77%),
+      rgb(19 36 49 / 89%)
+    );
+
+  border:
+    1px solid
+    rgb(130 174 198 / 21%);
+
+  border-radius: 9px;
+
+  box-shadow:
+    inset 0 3px 8px
+      rgb(0 0 0 / 30%),
+    inset 0 -1px 0
+      rgb(255 255 255 / 3%);
+}
+
+.file-manager-address {
+  padding: 0 13px;
+  gap: 9px;
+}
+
+.file-manager-address__icon {
+  flex: 0 0 auto;
+
+  color: #69a8cc;
+  font-size: 13px;
+}
+
+.file-manager-address
+[data-file-manager-address] {
+  overflow: hidden;
+
+  color: #adc0ca;
+  font-size: 10px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-manager-search {
+  padding: 0 11px;
+  gap: 8px;
+
+  color: #7894a5;
+}
+
+.file-manager-search:focus-within {
+  border-color:
+    rgb(102 176 216 / 55%);
+
+  box-shadow:
+    inset 0 3px 8px
+      rgb(0 0 0 / 30%),
+    0 0 0 3px
+      rgb(74 147 187 / 10%);
+}
+
+.file-manager-search input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  color: #d8e4e9;
+  font-size: 10px;
+}
+
+.file-manager-search input::placeholder {
+  color: #718997;
+}
+
+.file-manager-breadcrumb {
+  min-width: 0;
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+
+  background:
+    rgb(21 39 53 / 96%);
+
+  border-bottom:
+    1px solid
+    rgb(255 255 255 / 6%);
+
+  scrollbar-width: none;
+}
+
+.file-manager-breadcrumb::-webkit-scrollbar {
+  display: none;
+}
+
+.file-manager-breadcrumb__item {
+  min-width: max-content;
+  padding: 4px 7px;
+
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+
+  color: #91a8b5;
+  cursor: pointer;
+  font-size: 9px;
+}
+
+.file-manager-breadcrumb__item:hover {
+  background:
+    rgb(104 156 184 / 12%);
+
+  color: #c9d8df;
+}
+
+.file-manager-breadcrumb__separator {
+  color: #587180;
+  font-size: 13px;
+}
+
+.file-manager-layout {
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns:
+    218px
+    minmax(0, 1fr);
+}
+
+.file-manager-sidebar {
+  min-height: 0;
+  padding: 14px 10px;
+
+  overflow-y: auto;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(25 45 60 / 97%),
+      rgb(17 34 47 / 98%)
+    );
+
+  border-right:
+    1px solid
+    rgb(255 255 255 / 7%);
+}
+
+.file-manager-sidebar__item {
+  width: 100%;
+  min-height: 40px;
+  padding: 5px 9px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  color: #aabdc7;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: left;
+}
+
+.file-manager-sidebar__item:hover {
+  background:
+    rgb(103 151 178 / 9%);
+}
+
+.file-manager-sidebar__item.is-active {
+  background:
+    linear-gradient(
+      145deg,
+      rgb(79 145 180 / 24%),
+      rgb(52 105 134 / 13%)
+    );
+
+  border-color:
+    rgb(116 180 213 / 24%);
+
+  color: #deebf0;
+}
+
+.file-manager-sidebar__computer {
+  width: 23px;
+  height: 23px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  color: #77aeca;
+}
+
+.file-manager-sidebar__computer svg {
+  width: 21px;
+  height: 21px;
+
+  fill:
+    rgb(68 119 147 / 20%);
+
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.file-manager-sidebar__folder {
+  width: 24px;
+  height: 18px;
+
+  flex: 0 0 auto;
+
+  position: relative;
+
+  display: block;
+
+  background: #4b96c6;
+  border:
+    1px solid
+    rgb(196 230 247 / 24%);
+
+  border-radius: 3px 3px 4px 4px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 18%),
+    0 3px 5px
+      rgb(0 0 0 / 21%);
+}
+
+.file-manager-sidebar__folder::before {
+  width: 11px;
+  height: 5px;
+
+  position: absolute;
+  top: -4px;
+  left: 2px;
+
+  content: "";
+
+  background: inherit;
+  border-radius: 3px 3px 0 0;
+}
+
+.file-manager-sidebar__folder--teal {
+  background: #49958f;
+}
+
+.file-manager-sidebar__folder--purple {
+  background: #7c6ca5;
+}
+
+.file-manager-sidebar__folder--amber {
+  background: #a9824e;
+}
+
+.file-manager-sidebar__folder--steel {
+  background: #71838d;
+}
+
+.file-manager-sidebar__divider {
+  height: 1px;
+  margin: 8px 7px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 9%),
+      transparent
+    );
+}
+
+.file-manager-content {
+  min-height: 0;
+  padding: 19px;
+
+  overflow: auto;
+  outline: 0;
+
+  background:
+    radial-gradient(
+      circle at 82% 5%,
+      rgb(65 123 151 / 9%),
+      transparent 31%
+    ),
+    linear-gradient(
+      145deg,
+      rgb(27 46 60 / 98%),
+      rgb(19 36 49 / 99%)
+    );
+}
+
+.file-manager-items {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    );
+
+  align-content: start;
+  gap: 12px;
+}
+
+.file-manager-item {
+  min-width: 0;
+  min-height: 138px;
+  padding: 11px 8px;
+  margin-bottom: 3px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgb(65 91 110 / 23%),
+      rgb(38 64 82 / 13%)
+    );
+
+  border:
+    1px solid
+    rgb(145 186 207 / 8%);
+
+  border-radius: 11px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 4%),
+    0 3px 0
+      rgb(11 27 39 / 26%);
+
+  color: #cbd9df;
+  cursor: default;
+
+  transition:
+    background 100ms ease,
+    border-color 100ms ease,
+    transform 100ms ease;
+}
+
+.file-manager-item:hover {
+  background:
+    linear-gradient(
+      145deg,
+      rgb(82 133 160 / 19%),
+      rgb(49 94 118 / 10%)
+    );
+
+  border-color:
+    rgb(130 185 214 / 17%);
+
+  transform: translateY(-1px);
+}
+
+.file-manager-item.is-selected {
+  background:
+    linear-gradient(
+      145deg,
+      rgb(75 145 181 / 30%),
+      rgb(45 105 136 / 18%)
+    );
+
+  border-color:
+    rgb(113 184 219 / 43%);
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 7%),
+    0 0 0 3px
+      rgb(75 146 183 / 9%);
+}
+
+.file-manager-item__icon {
+  width: 72px;
+  height: 72px;
+
+  display: grid;
+  place-items: center;
+}
+
+.file-manager-item__details {
+  max-width: 100%;
+  margin-top: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.file-manager-item__details strong {
+  max-width: 100%;
+  overflow: hidden;
+
+  color: #e2edf1;
+  font-size: 10px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-manager-item__details small {
+  color: #78919e;
+  font-size: 8px;
+}
+
+.file-manager-folder-icon,
+.file-manager-file-icon {
+  width: 72px;
+  height: 72px;
+
+  overflow: visible;
+
+  filter:
+    drop-shadow(
+      0 8px 7px
+      rgb(0 0 0 / 25%)
+    );
+}
+
+.folder-icon__shadow,
+.file-icon__shadow {
+  fill: rgb(0 0 0 / 24%);
+  filter: blur(1.3px);
+}
+
+.folder-icon__back {
+  fill: #337bad;
+  stroke: #76b5d9;
+  stroke-width: 1.4;
+}
+
+.folder-icon__front {
+  fill: #4b99c9;
+  stroke: #88c5e6;
+  stroke-width: 1.4;
+}
+
+.folder-icon__shine {
+  fill: none;
+  stroke: rgb(232 248 255 / 48%);
+  stroke-width: 1.4;
+}
+
+.file-manager-folder-icon--teal
+.folder-icon__back {
+  fill: #347a76;
+  stroke: #77bcb5;
+}
+
+.file-manager-folder-icon--teal
+.folder-icon__front {
+  fill: #4b9992;
+  stroke: #8accc5;
+}
+
+.file-manager-folder-icon--purple
+.folder-icon__back {
+  fill: #65568f;
+  stroke: #9f91ca;
+}
+
+.file-manager-folder-icon--purple
+.folder-icon__front {
+  fill: #7d6ca7;
+  stroke: #b3a4d9;
+}
+
+.file-manager-folder-icon--amber
+.folder-icon__back {
+  fill: #846437;
+  stroke: #c39c5f;
+}
+
+.file-manager-folder-icon--amber
+.folder-icon__front {
+  fill: #a9834d;
+  stroke: #d4ae70;
+}
+
+.file-manager-folder-icon--steel
+.folder-icon__back {
+  fill: #576b76;
+  stroke: #91a7b1;
+}
+
+.file-manager-folder-icon--steel
+.folder-icon__front {
+  fill: #718790;
+  stroke: #afc0c7;
+}
+
+.file-icon__sheet {
+  fill: #e8f1f4;
+  stroke: #b4ccd6;
+  stroke-width: 1.3;
+}
+
+.file-icon__fold {
+  fill: #bdd6df;
+}
+
+.file-icon__line {
+  fill: none;
+  stroke: #769daf;
+  stroke-width: 1.4;
+}
+
+.file-manager-file-icon--spreadsheet
+.file-icon__sheet {
+  fill: #d8eee7;
+  stroke: #82b7a7;
+}
+
+.file-manager-file-icon--spreadsheet
+.file-icon__line {
+  stroke: #4a907b;
+}
+
+.file-manager-file-icon--audio
+.file-icon__sheet {
+  fill: #dcd7ec;
+  stroke: #a69bc7;
+}
+
+.file-manager-file-icon--audio
+.file-icon__line {
+  stroke: #796b9e;
+}
+
+.file-manager-file-icon--archive
+.file-icon__sheet {
+  fill: #eee2cc;
+  stroke: #c7a778;
+}
+
+.file-manager-file-icon--corrupted
+.file-icon__sheet {
+  fill: #d8c9cc;
+  stroke: #a97b82;
+}
+
+.file-manager-empty {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #7e96a3;
+  text-align: center;
+}
+
+.file-manager-empty__icon {
+  width: 66px;
+  height: 66px;
+  margin-bottom: 15px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgb(77 112 134 / 38%),
+      rgb(37 67 86 / 29%)
+    );
+
+  border:
+    1px solid
+    rgb(144 185 207 / 13%);
+
+  border-radius: 17px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 7%),
+    0 8px 18px
+      rgb(0 0 0 / 15%);
+
+  color: #779bb0;
+  font-size: 28px;
+}
+
+.file-manager-empty strong {
+  color: #aebfc8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.file-manager-empty span {
+  margin-top: 6px;
+
+  color: #708895;
+  font-size: 9px;
+}
+
+.file-manager-statusbar {
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgb(29 49 64 / 98%),
+      rgb(20 38 52 / 99%)
+    );
+
+  border-top:
+    1px solid
+    rgb(255 255 255 / 6%);
+
+  color: #6f8997;
+  font-size: 8px;
+  letter-spacing: 0.03em;
+}
+
+.file-manager-toast {
+  max-width:
+    calc(100% - 40px);
+
+  padding: 11px 14px;
+
+  position: absolute;
+  right: 18px;
+  bottom: 44px;
+  z-index: 5;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgb(63 88 106 / 98%),
+      rgb(31 55 71 / 99%)
+    );
+
+  border:
+    1px solid
+    rgb(146 191 213 / 22%);
+
+  border-radius: 9px;
+
+  box-shadow:
+    inset 0 1px 0
+      rgb(255 255 255 / 7%),
+    0 16px 40px
+      rgb(0 0 0 / 38%);
+
+  color: #c5d4db;
+  font-size: 9px;
+
+  animation:
+    file-manager-toast-appear
+    160ms
+    ease-out;
+}
+
+.file-manager-toast[hidden] {
+  display: none;
+}
+
+.taskbar__application--open {
+  position: relative;
+}
+
+.taskbar__application--open::after {
+  width: 21px;
+  height: 3px;
+
+  position: absolute;
+  right: 50%;
+  bottom: -7px;
+
+  content: "";
+
+  background:
+    linear-gradient(
+      90deg,
+      #54a4cf,
+      #75c1ba
+    );
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 0 10px
+    rgb(84 164 207 / 57%);
+
+  transform: translateX(50%);
+}
+
+.taskbar__application--active {
+  filter: brightness(1.14);
+}
+
+@keyframes file-manager-window-appear {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -47%)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
+
+@keyframes file-manager-toast-appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 820px) {
+  .file-manager-window {
+    width: auto;
+    height: auto;
+
+    min-width: 0;
+    min-height: 0;
+
+    top: 8px;
+    right: 8px;
+    bottom: 76px;
+    left: 8px;
+
+    grid-template-rows:
+      58px
+      auto
+      36px
+      minmax(0, 1fr)
+      29px;
+
+    border-radius: 14px;
+
+    transform: none;
+  }
+
+  .file-manager-window--maximized {
+    top: 4px;
+    right: 4px;
+    bottom: 70px;
+    left: 4px;
+  }
+
+  .file-manager-toolbar {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    padding: 8px;
+  }
+
+  .file-manager-search {
+    grid-column:
+      1 / -1;
+  }
+
+  .file-manager-layout {
+    grid-template-columns:
+      166px
+      minmax(0, 1fr);
+  }
+
+  .file-manager-items {
+    grid-template-columns:
+      repeat(
+        auto-fill,
+        minmax(125px, 1fr)
+      );
+  }
+
+  .file-manager-titlebar__identity span {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .file-manager-window {
+    top: 4px;
+    right: 4px;
+    bottom: 67px;
+    left: 4px;
+
+    grid-template-rows:
+      55px
+      auto
+      34px
+      minmax(0, 1fr)
+      27px;
+
+    border-radius: 12px;
+  }
+
+  .file-manager-titlebar {
+    padding-left: 10px;
+  }
+
+  .file-manager-titlebar__icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .file-manager-titlebar__icon
+  .file-manager-folder-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .file-manager-titlebar__identity strong {
+    max-width: 135px;
+    font-size: 9px;
+  }
+
+  .file-manager-titlebar__controls {
+    gap: 3px;
+  }
+
+  .file-manager-titlebar__controls button {
+    width: 32px;
+    height: 31px;
+  }
+
+  .file-manager-toolbar {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 7px;
+  }
+
+  .file-manager-toolbar__navigation button {
+    width: 31px;
+    height: 35px;
+  }
+
+  .file-manager-address {
+    padding: 0 9px;
+  }
+
+  .file-manager-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .file-manager-sidebar {
+    padding: 6px 8px;
+
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    border-right: 0;
+    border-bottom:
+      1px solid
+      rgb(255 255 255 / 7%);
+  }
+
+  .file-manager-sidebar__item {
+    width: auto;
+    min-width: max-content;
+    min-height: 34px;
+    padding: 4px 8px;
+  }
+
+  .file-manager-sidebar__divider {
+    width: 1px;
+    height: 24px;
+    margin: 5px 3px;
+
+    flex: 0 0 auto;
+  }
+
+  .file-manager-sidebar__folder,
+  .file-manager-sidebar__computer {
+    transform: scale(0.82);
+  }
+
+  .file-manager-content {
+    padding: 11px;
+  }
+
+  .file-manager-items {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 8px;
+  }
+
+  .file-manager-item {
+    min-height: 116px;
+  }
+
+  .file-manager-item__icon,
+  .file-manager-folder-icon,
+  .file-manager-file-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .file-manager-statusbar
+  span:last-child {
+    display: none;
+  }
+}
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .file-manager-window,
+  .file-manager-toast {
+    animation: none;
+  }
+}
+/* Финальная мобильная компоновка файлового менеджера */
+
+@media (max-width: 560px) {
+  /*
+   * Верхняя панель папок занимает только
+   * необходимую высоту, а основная область
+   * получает всё оставшееся место.
+   */
+  .file-manager-layout {
+    min-height: 0;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    grid-template-rows:
+      auto
+      minmax(0, 1fr);
+
+    overflow: hidden;
+  }
+
+  /*
+   * Вместо неудобной горизонтальной ленты
+   * показываем все корневые папки сеткой.
+   */
+  .file-manager-sidebar {
+    width: 100%;
+    max-height: none;
+    padding: 7px 8px 9px;
+
+    display: grid;
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+    gap: 5px;
+
+    overflow: visible;
+
+    border-right: 0;
+    border-bottom:
+      1px solid
+      rgb(255 255 255 / 7%);
+  }
+
+  .file-manager-sidebar__item {
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+    min-height: 34px;
+    padding: 4px 7px;
+
+    gap: 6px;
+
+    font-size: 9px;
+  }
+
+  .file-manager-sidebar__item
+  > span:last-child {
+    min-width: 0;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .file-manager-sidebar__folder,
+  .file-manager-sidebar__computer {
+    flex: 0 0 auto;
+
+    transform: scale(0.78);
+  }
+
+  /*
+   * Разделитель был нужен только
+   * в вертикальном компьютерном меню.
+   */
+  .file-manager-sidebar__divider {
+    display: none;
+  }
+
+  .file-manager-content {
+    min-height: 0;
+    overflow: auto;
+  }
+}
+
+/*
+ * На особенно узком телефоне используем
+ * две колонки, чтобы названия не сжимались.
+ */
+@media (max-width: 390px) {
+  .file-manager-sidebar {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}

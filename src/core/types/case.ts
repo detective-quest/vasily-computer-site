@@ -32,26 +32,13 @@ export interface CaseCatalog {
 export interface CaseFolder {
   id: string
   name: string
+  parentId?: string
 }
 
 export interface CaseFileSource {
   provider: StorageProvider
-
-  /**
-   * Файл, который открывается внутри сайта.
-   *
-   * Для Excel это позднее будет PDF-копия.
-   */
   previewPath?: string
-
-  /**
-   * Оригинальный файл для скачивания.
-   */
   downloadPath?: string
-
-  /**
-   * Текстовая расшифровка аудиозаписи.
-   */
   transcriptPath?: string
 }
 

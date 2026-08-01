@@ -2,9 +2,14 @@ import './styles/variables.css'
 import './styles/global.css'
 import './styles/boot.css'
 import './styles/desktop.css'
+import './styles/file-manager.css'
 import './styles/layout.css'
 import './styles/states.css'
 import './styles/viewers.css'
+
+import {
+  loadDefaultCase,
+} from './cases/case-loader'
 
 import {
   loadSystemConfig,
@@ -21,6 +26,10 @@ import {
 import {
   showDesktopScreen,
 } from './ui/desktop-screen'
+
+import {
+  attachFileManager,
+} from './ui/file-manager'
 
 import {
   showLoginScreen,
@@ -81,8 +90,13 @@ async function startApplication(
   root: HTMLDivElement,
 ): Promise<void> {
   try {
-    const systemConfig =
-      await loadSystemConfig()
+    const [
+      systemConfig,
+      manifest,
+    ] = await Promise.all([
+      loadSystemConfig(),
+      loadDefaultCase(),
+    ])
 
     await showBootScreen(
       root,
@@ -97,6 +111,11 @@ async function startApplication(
     showDesktopScreen(
       root,
       systemConfig,
+    )
+
+    attachFileManager(
+      root,
+      manifest,
     )
   } catch (error: unknown) {
     renderStartupError(
