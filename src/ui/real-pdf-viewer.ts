@@ -6,17 +6,63 @@ import type {
 interface RenderedDocumentConfig {
   directory: string
   pageCount: number
+  mobileDocumentPath: string
+}
+
+interface MobilePlotParty {
+  title: string
+  lines: string[]
+}
+
+type MobilePlotBlock =
+  | {
+      kind: 'paragraph'
+      text: string
+    }
+  | {
+      kind: 'subheading'
+      text: string
+    }
+  | {
+      kind: 'list'
+      items: string[]
+    }
+  | {
+      kind: 'parties'
+      left: MobilePlotParty
+      right: MobilePlotParty
+    }
+
+interface MobilePlotSection {
+  title: string
+  blocks: MobilePlotBlock[]
+}
+
+interface MobilePlotDocument {
+  eyebrow: string
+  title: string
+  subtitle: string
+  dateline?: string
+  meta: Array<{
+    label: string
+    value: string
+  }>
+  intro: string[]
+  sections: MobilePlotSection[]
 }
 
 interface RenderedDocumentViewerElements {
   window: HTMLElement
   title: HTMLElement
-  pages: HTMLElement
+  content: HTMLElement
   pageCount: HTMLElement
   minimizeButton: HTMLButtonElement
   maximizeButton: HTMLButtonElement
   closeButton: HTMLButtonElement
 }
+
+const MOBILE_READING_QUERY =
+  '(max-width: 820px)'
 
 const renderedDocuments:
   Record<string, RenderedDocumentConfig> = {
@@ -24,31 +70,44 @@ const renderedDocuments:
       directory:
         'contract_alliance_med_2023',
       pageCount: 2,
+      mobileDocumentPath:
+        'content/vasily-computer/mobile-documents/contract-alliance-med-2023.json',
     },
 
     'contract-medtechsnab-2024': {
       directory:
         'contract_medtechsnab_2024',
       pageCount: 4,
+      mobileDocumentPath:
+        'content/vasily-computer/mobile-documents/contract-medtechsnab-2024.json',
     },
 
     'contract-medical-technologies-2025': {
       directory:
         'contract_medical_technologies_2025',
       pageCount: 3,
+      mobileDocumentPath:
+        'content/vasily-computer/mobile-documents/contract-medical-technologies-2025.json',
     },
 
     'contract-pharmlogistic-2021': {
       directory:
         'contract_pharmlogistic_2021',
       pageCount: 3,
+      mobileDocumentPath:
+        'content/vasily-computer/mobile-documents/contract-pharmlogistic-2021.json',
     },
 
     'vasily-will': {
       directory: 'will',
       pageCount: 3,
+      mobileDocumentPath:
+        'content/vasily-computer/mobile-documents/vasily-will.json',
     },
   }
+
+const mobileDocumentCache =
+  new Map<string, MobilePlotDocument>()
 
 function findRenderedDocument(
   manifest: CaseManifest,
@@ -73,17 +132,6 @@ function getBaseUrl(): string {
     : `${import.meta.env.BASE_URL}/`
 }
 
-function addCacheVersion(
-  url: string,
-): string {
-  const separator =
-    url.includes('?')
-      ? '&'
-      : '?'
-
-  return `${url}${separator}viewer=rendered-v2`
-}
-
 function getPublicFileUrlCandidates(
   relativePath: string,
 ): string[] {
@@ -105,7 +153,7 @@ function getPublicFileUrlCandidates(
       window.location.origin,
     ).toString()
 
-  const orderedCandidates =
+  const orderedUrls =
     import.meta.env.DEV
       ? [
         rootUrl,
@@ -117,11 +165,7 @@ function getPublicFileUrlCandidates(
       ]
 
   return Array.from(
-    new Set(
-      orderedCandidates.map(
-        addCacheVersion,
-      ),
-    ),
+    new Set(orderedUrls),
   )
 }
 
@@ -129,7 +173,7 @@ function getPageUrlCandidates(
   config: RenderedDocumentConfig,
   pageNumber: number,
 ): string[] {
-  const relativePath =
+  return getPublicFileUrlCandidates(
     [
       'content',
       'vasily-computer',
@@ -137,11 +181,69 @@ function getPageUrlCandidates(
       'rendered',
       config.directory,
       `page-${pageNumber}.webp`,
-    ].join('/')
-
-  return getPublicFileUrlCandidates(
-    relativePath,
+    ].join('/'),
   )
+}
+
+async function loadMobileDocument(
+  config: RenderedDocumentConfig,
+): Promise<MobilePlotDocument> {
+  const cached =
+    mobileDocumentCache.get(
+      config.mobileDocumentPath,
+    )
+
+  if (cached) {
+    return cached
+  }
+
+  const candidates =
+    getPublicFileUrlCandidates(
+      config.mobileDocumentPath,
+    )
+
+  let lastError:
+    unknown =
+      new Error(
+        'Мобильная версия документа не найдена.',
+      )
+
+  for (
+    const candidate of candidates
+  ) {
+    try {
+      const response =
+        await fetch(
+          candidate,
+          {
+            cache: 'no-store',
+          },
+        )
+
+      if (!response.ok) {
+        lastError =
+          new Error(
+            `Ошибка загрузки: ${response.status}`,
+          )
+
+        continue
+      }
+
+      const documentData =
+        await response.json() as MobilePlotDocument
+
+      mobileDocumentCache.set(
+        config.mobileDocumentPath,
+        documentData,
+      )
+
+      return documentData
+    } catch (error: unknown) {
+      lastError = error
+    }
+  }
+
+  throw lastError
 }
 
 function createViewerWindow(
@@ -153,11 +255,11 @@ function createViewerWindow(
   windowElement.className =
     'document-viewer-window real-pdf-window'
 
-  windowElement.dataset
-    .realPdfWindow = ''
+  windowElement.dataset.realPdfWindow =
+    ''
 
-  windowElement.dataset
-    .renderedDocumentViewer = 'v2'
+  windowElement.dataset.renderedDocumentViewer =
+    'mobile-html-v1'
 
   windowElement.innerHTML = `
     <header class="document-viewer-titlebar">
@@ -247,8 +349,8 @@ function createViewerWindow(
       "
     >
       <div
-        class="real-document-pages"
-        data-real-document-pages
+        class="real-document-content"
+        data-real-document-content
       ></div>
     </main>
 
@@ -272,9 +374,9 @@ function createViewerWindow(
       '[data-real-pdf-title]',
     )
 
-  const pages =
+  const content =
     windowElement.querySelector<HTMLElement>(
-      '[data-real-document-pages]',
+      '[data-real-document-content]',
     )
 
   const pageCount =
@@ -299,7 +401,7 @@ function createViewerWindow(
 
   if (
     !title ||
-    !pages ||
+    !content ||
     !pageCount ||
     !minimizeButton ||
     !maximizeButton ||
@@ -315,7 +417,7 @@ function createViewerWindow(
   return {
     window: windowElement,
     title,
-    pages,
+    content,
     pageCount,
     minimizeButton,
     maximizeButton,
@@ -334,9 +436,8 @@ function createPageElement(
   pageElement.className =
     'real-document-page'
 
-  pageElement.dataset
-    .realDocumentPage =
-      String(pageNumber)
+  pageElement.dataset.realDocumentPage =
+    String(pageNumber)
 
   const loadingElement =
     document.createElement('span')
@@ -367,23 +468,20 @@ function createPageElement(
       ? 'eager'
       : 'lazy'
 
-  const pageUrlCandidates =
+  const candidates =
     getPageUrlCandidates(
       config,
       pageNumber,
     )
 
-  let currentCandidateIndex =
-    0
+  let candidateIndex = 0
 
-  const loadCurrentCandidate =
+  const loadCandidate =
     (): void => {
-      const candidateUrl =
-        pageUrlCandidates[
-          currentCandidateIndex
-        ]
+      const candidate =
+        candidates[candidateIndex]
 
-      if (!candidateUrl) {
+      if (!candidate) {
         imageElement.remove()
 
         loadingElement.className =
@@ -396,7 +494,7 @@ function createPageElement(
       }
 
       imageElement.src =
-        candidateUrl
+        candidate
     }
 
   imageElement.addEventListener(
@@ -413,13 +511,13 @@ function createPageElement(
   imageElement.addEventListener(
     'error',
     () => {
-      currentCandidateIndex += 1
+      candidateIndex += 1
 
       if (
-        currentCandidateIndex <
-        pageUrlCandidates.length
+        candidateIndex <
+        candidates.length
       ) {
-        loadCurrentCandidate()
+        loadCandidate()
 
         return
       }
@@ -439,17 +537,21 @@ function createPageElement(
     imageElement,
   )
 
-  loadCurrentCandidate()
+  loadCandidate()
 
   return pageElement
 }
 
-function renderDocumentPages(
+function renderDesktopPages(
   elements: RenderedDocumentViewerElements,
   file: CaseFile,
   config: RenderedDocumentConfig,
 ): void {
-  elements.pages.replaceChildren()
+  const pages =
+    document.createElement('div')
+
+  pages.className =
+    'real-document-pages'
 
   const fragment =
     document.createDocumentFragment()
@@ -468,21 +570,297 @@ function renderDocumentPages(
     )
   }
 
-  elements.pages.append(
-    fragment,
+  pages.append(fragment)
+
+  elements.content.className =
+    'real-document-content real-document-content--pages'
+
+  elements.content.replaceChildren(
+    pages,
+  )
+}
+
+function createTextElement(
+  tagName:
+    | 'p'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'span',
+  className: string,
+  text: string,
+): HTMLElement {
+  const element =
+    document.createElement(tagName)
+
+  element.className =
+    className
+
+  element.textContent =
+    text
+
+  return element
+}
+
+function createPartyElement(
+  party: MobilePlotParty,
+): HTMLElement {
+  const card =
+    document.createElement('section')
+
+  card.className =
+    'real-mobile-document__party'
+
+  card.append(
+    createTextElement(
+      'h3',
+      'real-mobile-document__party-title',
+      party.title,
+    ),
   )
 
-  elements.pageCount.textContent =
-    `Страниц: ${config.pageCount}`
+  party.lines.forEach(
+    (line) => {
+      card.append(
+        createTextElement(
+          'p',
+          'real-mobile-document__party-line',
+          line,
+        ),
+      )
+    },
+  )
 
+  return card
+}
+
+function createMobileBlock(
+  block: MobilePlotBlock,
+): HTMLElement {
+  if (
+    block.kind === 'paragraph'
+  ) {
+    return createTextElement(
+      'p',
+      'real-mobile-document__paragraph',
+      block.text,
+    )
+  }
+
+  if (
+    block.kind === 'subheading'
+  ) {
+    return createTextElement(
+      'h3',
+      'real-mobile-document__subheading',
+      block.text,
+    )
+  }
+
+  if (
+    block.kind === 'list'
+  ) {
+    const list =
+      document.createElement('ul')
+
+    list.className =
+      'real-mobile-document__list'
+
+    block.items.forEach(
+      (item) => {
+        const listItem =
+          document.createElement('li')
+
+        listItem.textContent =
+          item
+
+        list.append(listItem)
+      },
+    )
+
+    return list
+  }
+
+  const parties =
+    document.createElement('div')
+
+  parties.className =
+    'real-mobile-document__parties'
+
+  parties.append(
+    createPartyElement(
+      block.left,
+    ),
+    createPartyElement(
+      block.right,
+    ),
+  )
+
+  return parties
+}
+
+function createMobileDocumentElement(
+  documentData: MobilePlotDocument,
+): HTMLElement {
+  const article =
+    document.createElement('article')
+
+  article.className =
+    'real-mobile-document'
+
+  const header =
+    document.createElement('header')
+
+  header.className =
+    'real-mobile-document__header'
+
+  header.append(
+    createTextElement(
+      'span',
+      'real-mobile-document__eyebrow',
+      documentData.eyebrow,
+    ),
+    createTextElement(
+      'h1',
+      'real-mobile-document__title',
+      documentData.title,
+    ),
+    createTextElement(
+      'p',
+      'real-mobile-document__subtitle',
+      documentData.subtitle,
+    ),
+  )
+
+  if (documentData.dateline) {
+    header.append(
+      createTextElement(
+        'p',
+        'real-mobile-document__dateline',
+        documentData.dateline,
+      ),
+    )
+  }
+
+  const meta =
+    document.createElement('dl')
+
+  meta.className =
+    'real-mobile-document__meta'
+
+  documentData.meta.forEach(
+    (item) => {
+      const group =
+        document.createElement('div')
+
+      const term =
+        document.createElement('dt')
+
+      term.textContent =
+        item.label
+
+      const description =
+        document.createElement('dd')
+
+      description.textContent =
+        item.value
+
+      group.append(
+        term,
+        description,
+      )
+
+      meta.append(group)
+    },
+  )
+
+  header.append(meta)
+  article.append(header)
+
+  documentData.intro.forEach(
+    (paragraph) => {
+      article.append(
+        createTextElement(
+          'p',
+          'real-mobile-document__intro',
+          paragraph,
+        ),
+      )
+    },
+  )
+
+  documentData.sections.forEach(
+    (sectionData) => {
+      const section =
+        document.createElement('section')
+
+      section.className =
+        'real-mobile-document__section'
+
+      section.append(
+        createTextElement(
+          'h2',
+          'real-mobile-document__section-title',
+          sectionData.title,
+        ),
+      )
+
+      sectionData.blocks.forEach(
+        (block) => {
+          section.append(
+            createMobileBlock(block),
+          )
+        },
+      )
+
+      article.append(section)
+    },
+  )
+
+  const footer =
+    document.createElement('footer')
+
+  footer.className =
+    'real-mobile-document__footer'
+
+  footer.textContent =
+    'Персональный компьютер · локальная копия'
+
+  article.append(footer)
+
+  return article
+}
+
+function createLoadingState(): HTMLElement {
+  return createTextElement(
+    'p',
+    'real-mobile-document-state',
+    'Подготовка документа к чтению…',
+  )
+}
+
+function createErrorState(): HTMLElement {
+  return createTextElement(
+    'p',
+    'real-mobile-document-state real-mobile-document-state--error',
+    'Не удалось загрузить мобильную версию документа.',
+  )
+}
+
+function resetScrollPosition(
+  elements: RenderedDocumentViewerElements,
+): void {
   const body =
-    elements.pages.closest<HTMLElement>(
+    elements.content.closest<HTMLElement>(
       '.real-pdf-body',
     )
 
-  if (body) {
-    body.scrollTop = 0
+  if (!body) {
+    return
   }
+
+  body.scrollTop = 0
+  body.scrollLeft = 0
 }
 
 export function attachRealPdfViewer(
@@ -500,17 +878,129 @@ export function attachRealPdfViewer(
     )
   }
 
+  const mobileReadingMedia =
+    window.matchMedia(
+      MOBILE_READING_QUERY,
+    )
+
   let elements:
     RenderedDocumentViewerElements | null =
       null
 
+  let currentFile:
+    CaseFile | null =
+      null
+
+  let renderRequestId = 0
+
+  const renderCurrentFile =
+    async (): Promise<void> => {
+      if (
+        !elements ||
+        !currentFile
+      ) {
+        return
+      }
+
+      const currentElements =
+        elements
+
+      const currentDocument =
+        currentFile
+
+      const config =
+        renderedDocuments[
+          currentDocument.id
+        ]
+
+      if (!config) {
+        return
+      }
+
+      renderRequestId += 1
+
+      const requestId =
+        renderRequestId
+
+      currentElements.pageCount.textContent =
+        `Страниц: ${config.pageCount}`
+
+      if (
+        !mobileReadingMedia.matches
+      ) {
+        renderDesktopPages(
+          currentElements,
+          currentDocument,
+          config,
+        )
+
+        resetScrollPosition(
+          currentElements,
+        )
+
+        return
+      }
+
+      currentElements.content.className =
+        'real-document-content real-document-content--mobile'
+
+      currentElements.content.replaceChildren(
+        createLoadingState(),
+      )
+
+      resetScrollPosition(
+        currentElements,
+      )
+
+      try {
+        const documentData =
+          await loadMobileDocument(
+            config,
+          )
+
+        if (
+          requestId !== renderRequestId ||
+          elements !== currentElements ||
+          currentFile !== currentDocument
+        ) {
+          return
+        }
+
+        currentElements.content.replaceChildren(
+          createMobileDocumentElement(
+            documentData,
+          ),
+        )
+
+        resetScrollPosition(
+          currentElements,
+        )
+      } catch {
+        if (
+          requestId !== renderRequestId ||
+          elements !== currentElements
+        ) {
+          return
+        }
+
+        currentElements.content.replaceChildren(
+          createErrorState(),
+        )
+      }
+    }
+
   const closeViewer =
     (): void => {
+      renderRequestId += 1
+      currentFile = null
+
       if (!elements) {
         return
       }
 
-      elements.pages.replaceChildren()
+      elements.content
+        .replaceChildren()
+
       elements.window.remove()
 
       elements = null
@@ -582,18 +1072,23 @@ export function attachRealPdfViewer(
         )
     }
 
+    currentFile = file
+
     elements.window.hidden =
       false
 
     elements.title.textContent =
       file.name
 
-    renderDocumentPages(
-      elements,
-      file,
-      config,
-    )
+    void renderCurrentFile()
   }
+
+  mobileReadingMedia.addEventListener(
+    'change',
+    () => {
+      void renderCurrentFile()
+    },
+  )
 
   const getFileFromTarget = (
     target: EventTarget | null,
