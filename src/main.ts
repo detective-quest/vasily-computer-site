@@ -5,6 +5,7 @@ import './styles/desktop.css'
 import './styles/file-manager.css'
 import './styles/document-viewer.css'
 import './styles/mail.css'
+import './styles/mail-attachments.css'
 import './styles/layout.css'
 import './styles/states.css'
 import './styles/viewers.css'
@@ -52,6 +53,10 @@ import {
 import {
   attachMailApp,
 } from './ui/mail-app'
+
+import {
+  attachMailAttachmentBridge,
+} from './ui/mail-attachment-bridge'
 
 const appElement =
   document.querySelector<HTMLDivElement>(
@@ -147,6 +152,11 @@ async function startApplication(
     )
 
     attachMailApp(
+      root,
+      mailCatalog,
+    )
+
+    attachMailAttachmentBridge(
       root,
       mailCatalog,
     )

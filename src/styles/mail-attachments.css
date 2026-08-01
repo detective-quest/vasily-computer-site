@@ -1,0 +1,95 @@
+.mail-attachment[
+  data-mail-attachment-state="ready"
+] {
+  position: relative;
+
+  padding-right: 88px;
+
+  cursor: pointer;
+
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 100ms ease;
+}
+
+.mail-attachment[
+  data-mail-attachment-state="ready"
+]::after {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  content: "Открыть";
+
+  color: #55706d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  transform:
+    translateY(-50%);
+}
+
+.mail-attachment[
+  data-mail-attachment-state="ready"
+]:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #c4d8d4,
+      #b6cfca
+    );
+
+  border-color:
+    #93afa9;
+
+  box-shadow:
+    0 5px 14px
+    rgb(47 80 75 / 15%);
+
+  transform:
+    translateY(-1px);
+}
+
+.mail-attachment[
+  data-mail-attachment-state="ready"
+]:active {
+  transform:
+    translateY(1px);
+}
+
+.mail-attachment[
+  data-mail-attachment-state="ready"
+]:focus-visible {
+  outline:
+    3px solid
+    rgb(74 137 155 / 34%);
+
+  outline-offset: 2px;
+}
+
+.mail-attachment[
+  data-mail-attachment-state="unavailable"
+] {
+  opacity: 0.7;
+}
+
+@media (max-width: 620px) {
+  .mail-attachment[
+    data-mail-attachment-state="ready"
+  ] {
+    min-height: 52px;
+    padding-right: 73px;
+  }
+
+  .mail-attachment[
+    data-mail-attachment-state="ready"
+  ]::after {
+    right: 10px;
+
+    font-size: 8px;
+  }
+}
