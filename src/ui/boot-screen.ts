@@ -9,10 +9,10 @@ import {
 const BOOT_STORAGE_KEY =
   'vasily-computer:boot-completed:v1'
 
-const NORMAL_STEP_DELAY_MS = 620
+const NORMAL_STEP_DELAY_MS = 680
 const REDUCED_MOTION_STEP_DELAY_MS = 120
 
-const NORMAL_FINISH_DELAY_MS = 420
+const NORMAL_FINISH_DELAY_MS = 460
 const REDUCED_MOTION_FINISH_DELAY_MS = 80
 
 function readBootCompletion(): boolean {
@@ -78,18 +78,73 @@ export async function showBootScreen(
         system-stage--boot
       "
     >
+      <div
+        class="system-backdrop"
+        aria-hidden="true"
+      >
+        <span
+          class="
+            system-backdrop__orb
+            system-backdrop__orb--blue
+          "
+        ></span>
+
+        <span
+          class="
+            system-backdrop__orb
+            system-backdrop__orb--teal
+          "
+        ></span>
+
+        <span
+          class="
+            system-backdrop__orb
+            system-backdrop__orb--amber
+          "
+        ></span>
+
+        <span
+          class="
+            system-backdrop__grid
+          "
+        ></span>
+
+        <span
+          class="
+            system-backdrop__grain
+          "
+        ></span>
+
+        <span
+          class="
+            system-backdrop__vignette
+          "
+        ></span>
+      </div>
+
       <section
         class="computer-boot"
         aria-label="Запуск компьютера"
       >
         <div
-          class="computer-boot__mark"
+          class="
+            computer-boot__logo-shell
+          "
           aria-hidden="true"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <div
+            class="computer-boot__logo"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
+
+        <p class="computer-boot__eyebrow">
+          Персональная система
+        </p>
 
         <h1 class="computer-boot__title">
           ${escapeHtml(
@@ -98,32 +153,74 @@ export async function showBootScreen(
         </h1>
 
         <p class="computer-boot__subtitle">
-          Персональный компьютер
+          Локальный профиль · защищённый доступ
         </p>
 
-        <div
-          class="computer-boot__progress"
-          role="progressbar"
-          aria-label="Загрузка системы"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          aria-valuenow="0"
-        >
+        <div class="computer-boot__panel">
           <div
-            class="computer-boot__progress-fill"
-            data-boot-progress
-          ></div>
+            class="
+              computer-boot__status-line
+            "
+          >
+            <span
+              class="
+                computer-boot__pulse
+              "
+              aria-hidden="true"
+            ></span>
+
+            <span
+              data-boot-message
+              aria-live="polite"
+            >
+              ${escapeHtml(
+                messages[0] ??
+                  'Запуск системы',
+              )}
+            </span>
+          </div>
+
+          <div
+            class="computer-boot__progress"
+            role="progressbar"
+            aria-label="Загрузка системы"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div
+              class="
+                computer-boot__progress-fill
+              "
+              data-boot-progress
+            ></div>
+
+            <div
+              class="
+                computer-boot__progress-shine
+              "
+              aria-hidden="true"
+            ></div>
+          </div>
+
+          <div
+            class="computer-boot__steps"
+            aria-hidden="true"
+          >
+            ${messages
+              .map(
+                () => `
+                  <span
+                    data-boot-step
+                  ></span>
+                `,
+              )
+              .join('')}
+          </div>
         </div>
 
-        <p
-          class="computer-boot__message"
-          data-boot-message
-          aria-live="polite"
-        >
-          ${escapeHtml(
-            messages[0] ??
-              'Запуск системы',
-          )}
+        <p class="computer-boot__footer">
+          Подготовка локальных служб
         </p>
       </section>
     </main>
@@ -142,6 +239,13 @@ export async function showBootScreen(
   const messageElement =
     root.querySelector<HTMLElement>(
       '[data-boot-message]',
+    )
+
+  const stepElements =
+    Array.from(
+      root.querySelectorAll<HTMLElement>(
+        '[data-boot-step]',
+      ),
     )
 
   if (
@@ -192,8 +296,34 @@ export async function showBootScreen(
       String(progress),
     )
 
+    stepElements.forEach(
+      (stepElement, stepIndex) => {
+        stepElement.classList.toggle(
+          'is-active',
+          stepIndex === index,
+        )
+
+        stepElement.classList.toggle(
+          'is-complete',
+          stepIndex < index,
+        )
+      },
+    )
+
     await wait(stepDelay)
   }
+
+  stepElements.forEach(
+    (stepElement) => {
+      stepElement.classList.remove(
+        'is-active',
+      )
+
+      stepElement.classList.add(
+        'is-complete',
+      )
+    },
+  )
 
   saveBootCompletion()
 
