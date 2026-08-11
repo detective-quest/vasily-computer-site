@@ -1,498 +1,481 @@
 {
-    "id":  "vasily-computer",
-    "driveLabel":  "Системный диск",
-    "driveLetter":  "C",
-    "systemName":  "Персональный компьютер",
-    "snapshotDate":  "—",
-    "snapshotTime":  "—",
-    "capacityLabel":  "—",
-    "freeSpaceLabel":  "—",
-    "folders":  [
-                    {
-                        "id":  "documents",
-                        "name":  "Документы"
-                    },
-                    {
-                        "id":  "contracts",
-                        "name":  "Договоры",
-                        "parentId":  "documents"
-                    },
-                    {
-                        "id":  "audio",
-                        "name":  "Аудиозаписи",
-                        "parentId":  "documents"
-                    },
-                    {
-                        "id":  "miscellaneous",
-                        "name":  "Разное",
-                        "parentId":  "documents"
-                    },
-                    {
-                        "id":  "work",
-                        "name":  "Работа"
-                    },
-                    {
-                        "id":  "reports",
-                        "name":  "Отчёты",
-                        "parentId":  "work"
-                    },
-                    {
-                        "id":  "projects",
-                        "name":  "Проекты",
-                        "parentId":  "work"
-                    },
-                    {
-                        "id":  "personal",
-                        "name":  "Личное"
-                    },
-                    {
-                        "id":  "personal-documents",
-                        "name":  "Личные документы",
-                        "parentId":  "personal"
-                    },
-                    {
-                        "id":  "drafts",
-                        "name":  "Черновики",
-                        "parentId":  "personal"
-                    },
-                    {
-                        "id":  "events",
-                        "name":  "Мероприятия"
-                    },
-                    {
-                        "id":  "company-birthday",
-                        "name":  "День рождения компании",
-                        "parentId":  "events"
-                    },
-                    {
-                        "id":  "downloads",
-                        "name":  "Загрузки"
-                    },
-                    {
-                        "id":  "archive",
-                        "name":  "Архив"
-                    },
-                    {
-                        "id":  "trash",
-                        "name":  "Корзина"
-                    }
-                ],
-    "files":  [
-                  {
-                      "id":  "insurance-memo",
-                      "folderId":  "miscellaneous",
-                      "name":  "Страховая памятка.docx",
-                      "kind":  "text",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "contractor-contacts",
-                      "folderId":  "miscellaneous",
-                      "name":  "Контакты подрядчиков.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "equipment-instruction",
-                      "folderId":  "miscellaneous",
-                      "name":  "Инструкция по оборудованию.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "room-usage-october",
-                      "folderId":  "reports",
-                      "name":  "Использование помещений — октябрь.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "purchasing-quarter-three",
-                      "folderId":  "reports",
-                      "name":  "Закупки — III квартал.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "meeting-plan-12-11",
-                      "folderId":  "reports",
-                      "name":  "План совещания 12.11.docx",
-                      "kind":  "text",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "equipment-maintenance",
-                      "folderId":  "reports",
-                      "name":  "Обслуживание оборудования.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "waiting-area-update",
-                      "folderId":  "projects",
-                      "name":  "Обновление зоны ожидания.docx",
-                      "kind":  "text",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "office-repair-schedule",
-                      "folderId":  "projects",
-                      "name":  "График ремонта кабинетов.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "household-expenses-november",
-                      "folderId":  "personal-documents",
-                      "name":  "Семейные расходы — ноябрь.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "warranty-documents",
-                      "folderId":  "personal-documents",
-                      "name":  "Гарантийные документы.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "management-company-appeal",
-                      "folderId":  "drafts",
-                      "name":  "Обращение в управляющую компанию.txt",
-                      "kind":  "text",
-                      "mimeType":  "text/plain",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "company-birthday-plan",
-                      "folderId":  "company-birthday",
-                      "name":  "План мероприятия.docx",
-                      "kind":  "text",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "company-birthday-guests",
-                      "folderId":  "company-birthday",
-                      "name":  "Список гостей.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "company-birthday-menu",
-                      "folderId":  "company-birthday",
-                      "name":  "Варианты меню.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "office-furniture-catalog",
-                      "folderId":  "downloads",
-                      "name":  "Каталог офисной мебели.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "scan-17-09-2025",
-                      "folderId":  "downloads",
-                      "name":  "scan_17-09-2025.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "corrupted",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "seminar-schedule-2023",
-                      "folderId":  "archive",
-                      "name":  "Расписание семинара 2023.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "old-contacts",
-                      "folderId":  "trash",
-                      "name":  "Старые контакты.xlsx",
-                      "kind":  "spreadsheet",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "vacation-schedule-draft",
-                      "folderId":  "trash",
-                      "name":  "Черновик графика отпусков.docx",
-                      "kind":  "text",
-                      "mimeType":  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                      "sizeLabel":  "—",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "source":  {
-                                     "provider":  "virtual"
-                                 }
-                  },
-                  {
-                      "id":  "contract-alliance-med-2023",
-                      "folderId":  "contracts",
-                      "name":  "Договор с ООО «Альянс-Мед» — 2023.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "89 КБ",
-                      "createdAt":  "12.08.2023",
-                      "modifiedAt":  "12.08.2023",
-                      "status":  "normal",
-                      "description":  "Договор на оказание маркетинговых услуг.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/contracts/contract_alliance_med_2023.pdf",
-                                     "downloadPath":  "content/vasily-computer/files/contracts/contract_alliance_med_2023.pdf"
-                                 }
-                  },
-                  {
-                      "id":  "contract-medtechsnab-2024",
-                      "folderId":  "contracts",
-                      "name":  "Договор с ООО «МедТехСнаб» — 2024.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "95 КБ",
-                      "createdAt":  "10.01.2024",
-                      "modifiedAt":  "10.01.2024",
-                      "status":  "normal",
-                      "description":  "Договор возмездного оказания услуг.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/contracts/contract_medtechsnab_2024.pdf",
-                                     "downloadPath":  "content/vasily-computer/files/contracts/contract_medtechsnab_2024.pdf"
-                                 }
-                  },
-                  {
-                      "id":  "contract-medical-technologies-2025",
-                      "folderId":  "contracts",
-                      "name":  "Договор с ООО «Медицинские технологии» — 2025.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "93 КБ",
-                      "createdAt":  "20.05.2025",
-                      "modifiedAt":  "20.05.2025",
-                      "status":  "normal",
-                      "description":  "Договор на разработку программного обеспечения.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/contracts/contract_medical_technologies_2025.pdf",
-                                     "downloadPath":  "content/vasily-computer/files/contracts/contract_medical_technologies_2025.pdf"
-                                 }
-                  },
-                  {
-                      "id":  "contract-pharmlogistic-2021",
-                      "folderId":  "contracts",
-                      "name":  "Договор с ООО «ФармЛогистик» — 2021.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "160 КБ",
-                      "createdAt":  "15.02.2021",
-                      "modifiedAt":  "15.02.2021",
-                      "status":  "normal",
-                      "description":  "Договор транспортной экспедиции.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/contracts/contract_pharmlogistic_2021.pdf",
-                                     "downloadPath":  "content/vasily-computer/files/contracts/contract_pharmlogistic_2021.pdf"
-                                 }
-                  },
-                  {
-                      "id":  "vasily-will",
-                      "folderId":  "personal-documents",
-                      "name":  "Завещание.pdf",
-                      "kind":  "pdf",
-                      "mimeType":  "application/pdf",
-                      "sizeLabel":  "169 КБ",
-                      "createdAt":  "15.11.2025",
-                      "modifiedAt":  "15.11.2025",
-                      "status":  "normal",
-                      "description":  "Личный нотариальный документ.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/personal/will.pdf",
-                                     "downloadPath":  "content/vasily-computer/files/personal/will.pdf"
-                                 }
-                  },
-                  {
-                      "id":  "recording-001",
-                      "folderId":  "audio",
-                      "name":  "REC_001.mp3",
-                      "kind":  "audio",
-                      "mimeType":  "audio/mpeg",
-                      "sizeLabel":  "2013 КБ",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "description":  "Аудиозапись MP3.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/audio/REC_001.mp3",
-                                     "downloadPath":  "content/vasily-computer/files/audio/REC_001.mp3"
-                                 }
-                  },
-                  {
-                      "id":  "recording-002",
-                      "folderId":  "audio",
-                      "name":  "REC_002.mp3",
-                      "kind":  "audio",
-                      "mimeType":  "audio/mpeg",
-                      "sizeLabel":  "1984 КБ",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "description":  "Аудиозапись MP3.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/audio/REC_002.mp3",
-                                     "downloadPath":  "content/vasily-computer/files/audio/REC_002.mp3"
-                                 }
-                  },
-                  {
-                      "id":  "recording-003",
-                      "folderId":  "audio",
-                      "name":  "REC_003.mp3",
-                      "kind":  "audio",
-                      "mimeType":  "audio/mpeg",
-                      "sizeLabel":  "1771 КБ",
-                      "createdAt":  "—",
-                      "modifiedAt":  "—",
-                      "status":  "normal",
-                      "description":  "Аудиозапись MP3.",
-                      "source":  {
-                                     "provider":  "pages",
-                                     "previewPath":  "content/vasily-computer/files/audio/REC_003.mp3",
-                                     "downloadPath":  "content/vasily-computer/files/audio/REC_003.mp3"
-                                 }
-                  }
-              ]
+  "id": "vasily-computer",
+  "driveLabel": "Системный диск",
+  "driveLetter": "C",
+  "systemName": "Персональный компьютер",
+  "snapshotDate": "—",
+  "snapshotTime": "—",
+  "capacityLabel": "—",
+  "freeSpaceLabel": "—",
+  "folders": [
+    {
+      "id": "documents",
+      "name": "Документы"
+    },
+    {
+      "id": "contracts",
+      "name": "Договоры",
+      "parentId": "documents"
+    },
+    {
+      "id": "audio",
+      "name": "Аудиозаписи",
+      "parentId": "documents"
+    },
+    {
+      "id": "miscellaneous",
+      "name": "Разное",
+      "parentId": "documents"
+    },
+    {
+      "id": "work",
+      "name": "Работа"
+    },
+    {
+      "id": "reports",
+      "name": "Отчёты",
+      "parentId": "work"
+    },
+    {
+      "id": "projects",
+      "name": "Проекты",
+      "parentId": "work"
+    },
+    {
+      "id": "personal",
+      "name": "Личное"
+    },
+    {
+      "id": "personal-documents",
+      "name": "Личные документы",
+      "parentId": "personal"
+    },
+    {
+      "id": "drafts",
+      "name": "Черновики",
+      "parentId": "personal"
+    },
+    {
+      "id": "events",
+      "name": "Мероприятия"
+    },
+    {
+      "id": "company-birthday",
+      "name": "День рождения компании",
+      "parentId": "events"
+    },
+    {
+      "id": "downloads",
+      "name": "Загрузки"
+    },
+    {
+      "id": "archive",
+      "name": "Архив"
+    },
+    {
+      "id": "trash",
+      "name": "Корзина"
+    }
+  ],
+  "files": [
+    {
+      "id": "insurance-memo",
+      "folderId": "miscellaneous",
+      "name": "Страховая памятка.docx",
+      "kind": "text",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "contractor-contacts",
+      "folderId": "miscellaneous",
+      "name": "Контакты подрядчиков.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "equipment-instruction",
+      "folderId": "miscellaneous",
+      "name": "Инструкция по оборудованию.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "room-usage-october",
+      "folderId": "reports",
+      "name": "Использование помещений — октябрь.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "purchasing-quarter-three",
+      "folderId": "reports",
+      "name": "Закупки — III квартал.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "meeting-plan-12-11",
+      "folderId": "reports",
+      "name": "План совещания 12.11.docx",
+      "kind": "text",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "equipment-maintenance",
+      "folderId": "reports",
+      "name": "Обслуживание оборудования.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "waiting-area-update",
+      "folderId": "projects",
+      "name": "Обновление зоны ожидания.docx",
+      "kind": "text",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "office-repair-schedule",
+      "folderId": "projects",
+      "name": "График ремонта кабинетов.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "household-expenses-november",
+      "folderId": "personal-documents",
+      "name": "Семейные расходы — ноябрь.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "warranty-documents",
+      "folderId": "personal-documents",
+      "name": "Гарантийные документы.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "management-company-appeal",
+      "folderId": "drafts",
+      "name": "Обращение в управляющую компанию.txt",
+      "kind": "text",
+      "mimeType": "text/plain",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "company-birthday-plan",
+      "folderId": "company-birthday",
+      "name": "План мероприятия.docx",
+      "kind": "text",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "company-birthday-guests",
+      "folderId": "company-birthday",
+      "name": "Список гостей.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "company-birthday-menu",
+      "folderId": "company-birthday",
+      "name": "Варианты меню.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "office-furniture-catalog",
+      "folderId": "downloads",
+      "name": "Каталог офисной мебели.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "scan-17-09-2025",
+      "folderId": "downloads",
+      "name": "scan_17-09-2025.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "corrupted",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "seminar-schedule-2023",
+      "folderId": "archive",
+      "name": "Расписание семинара 2023.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "old-contacts",
+      "folderId": "trash",
+      "name": "Старые контакты.xlsx",
+      "kind": "spreadsheet",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "vacation-schedule-draft",
+      "folderId": "trash",
+      "name": "Черновик графика отпусков.docx",
+      "kind": "text",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sizeLabel": "—",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "source": {
+        "provider": "virtual"
+      }
+    },
+    {
+      "id": "contract-alliance-med-2023",
+      "folderId": "contracts",
+      "name": "Договор с ООО «Альянс-Мед» — 2023.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "89 КБ",
+      "createdAt": "12.08.2023",
+      "modifiedAt": "12.08.2023",
+      "status": "normal",
+      "description": "Договор на оказание маркетинговых услуг.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/contracts/contract_alliance_med_2023.pdf",
+        "downloadPath": "content/vasily-computer/files/contracts/contract_alliance_med_2023.pdf"
+      }
+    },
+    {
+      "id": "contract-medical-technologies-2025",
+      "folderId": "contracts",
+      "name": "Договор с ООО «Медицинские технологии» — 2025.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "90 КБ",
+      "createdAt": "20.05.2025",
+      "modifiedAt": "20.05.2025",
+      "status": "normal",
+      "description": "Договор на разработку программного обеспечения.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/contracts/contract_medical_technologies_2025.pdf",
+        "downloadPath": "content/vasily-computer/files/contracts/contract_medical_technologies_2025.pdf"
+      }
+    },
+    {
+      "id": "contract-pharmlogistic-2021",
+      "folderId": "contracts",
+      "name": "Договор с ООО «ФармЛогистик» — 2021.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "158 КБ",
+      "createdAt": "15.02.2021",
+      "modifiedAt": "15.02.2021",
+      "status": "normal",
+      "description": "Договор транспортной экспедиции.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/contracts/contract_pharmlogistic_2021.pdf",
+        "downloadPath": "content/vasily-computer/files/contracts/contract_pharmlogistic_2021.pdf"
+      }
+    },
+    {
+      "id": "vasily-will",
+      "folderId": "personal-documents",
+      "name": "Приложение №1 к завещанию.pdf",
+      "kind": "pdf",
+      "mimeType": "application/pdf",
+      "sizeLabel": "92 КБ",
+      "createdAt": "15.11.2025",
+      "modifiedAt": "15.11.2025",
+      "status": "normal",
+      "description": "Приложение к завещанию.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/personal/will.pdf",
+        "downloadPath": "content/vasily-computer/files/personal/will.pdf"
+      }
+    },
+    {
+      "id": "recording-001",
+      "folderId": "audio",
+      "name": "REC_001.mp3",
+      "kind": "audio",
+      "mimeType": "audio/mpeg",
+      "sizeLabel": "2013 КБ",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "description": "Аудиозапись MP3.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/audio/REC_001.mp3",
+        "downloadPath": "content/vasily-computer/files/audio/REC_001.mp3"
+      }
+    },
+    {
+      "id": "recording-002",
+      "folderId": "audio",
+      "name": "REC_002.mp3",
+      "kind": "audio",
+      "mimeType": "audio/mpeg",
+      "sizeLabel": "1984 КБ",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "description": "Аудиозапись MP3.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/audio/REC_002.mp3",
+        "downloadPath": "content/vasily-computer/files/audio/REC_002.mp3"
+      }
+    },
+    {
+      "id": "recording-003",
+      "folderId": "audio",
+      "name": "REC_003.mp3",
+      "kind": "audio",
+      "mimeType": "audio/mpeg",
+      "sizeLabel": "1771 КБ",
+      "createdAt": "—",
+      "modifiedAt": "—",
+      "status": "normal",
+      "description": "Аудиозапись MP3.",
+      "source": {
+        "provider": "pages",
+        "previewPath": "content/vasily-computer/files/audio/REC_003.mp3",
+        "downloadPath": "content/vasily-computer/files/audio/REC_003.mp3"
+      }
+    }
+  ]
 }
