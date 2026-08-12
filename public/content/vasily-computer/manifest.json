@@ -93,20 +93,6 @@
       }
     },
     {
-      "id": "contractor-contacts",
-      "folderId": "miscellaneous",
-      "name": "Контакты подрядчиков.xlsx",
-      "kind": "spreadsheet",
-      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
       "id": "equipment-instruction",
       "folderId": "miscellaneous",
       "name": "Инструкция по оборудованию.pdf",
@@ -135,39 +121,11 @@
       }
     },
     {
-      "id": "purchasing-quarter-three",
-      "folderId": "reports",
-      "name": "Закупки — III квартал.xlsx",
-      "kind": "spreadsheet",
-      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
       "id": "meeting-plan-12-11",
       "folderId": "reports",
       "name": "План совещания 12.11.docx",
       "kind": "text",
       "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
-      "id": "equipment-maintenance",
-      "folderId": "reports",
-      "name": "Обслуживание оборудования.pdf",
-      "kind": "pdf",
-      "mimeType": "application/pdf",
       "sizeLabel": "—",
       "createdAt": "—",
       "modifiedAt": "—",
@@ -191,39 +149,11 @@
       }
     },
     {
-      "id": "office-repair-schedule",
-      "folderId": "projects",
-      "name": "График ремонта кабинетов.xlsx",
-      "kind": "spreadsheet",
-      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
       "id": "household-expenses-november",
       "folderId": "personal-documents",
       "name": "Семейные расходы — ноябрь.xlsx",
       "kind": "spreadsheet",
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
-      "id": "warranty-documents",
-      "folderId": "personal-documents",
-      "name": "Гарантийные документы.pdf",
-      "kind": "pdf",
-      "mimeType": "application/pdf",
       "sizeLabel": "—",
       "createdAt": "—",
       "modifiedAt": "—",
@@ -261,20 +191,6 @@
       }
     },
     {
-      "id": "company-birthday-guests",
-      "folderId": "company-birthday",
-      "name": "Список гостей.xlsx",
-      "kind": "spreadsheet",
-      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
       "id": "company-birthday-menu",
       "folderId": "company-birthday",
       "name": "Варианты меню.pdf",
@@ -303,20 +219,6 @@
       }
     },
     {
-      "id": "scan-17-09-2025",
-      "folderId": "downloads",
-      "name": "scan_17-09-2025.pdf",
-      "kind": "pdf",
-      "mimeType": "application/pdf",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "corrupted",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
       "id": "seminar-schedule-2023",
       "folderId": "archive",
       "name": "Расписание семинара 2023.pdf",
@@ -336,20 +238,6 @@
       "name": "Старые контакты.xlsx",
       "kind": "spreadsheet",
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "sizeLabel": "—",
-      "createdAt": "—",
-      "modifiedAt": "—",
-      "status": "normal",
-      "source": {
-        "provider": "virtual"
-      }
-    },
-    {
-      "id": "vacation-schedule-draft",
-      "folderId": "trash",
-      "name": "Черновик графика отпусков.docx",
-      "kind": "text",
-      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       "sizeLabel": "—",
       "createdAt": "—",
       "modifiedAt": "—",
