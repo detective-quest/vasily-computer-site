@@ -583,3 +583,125 @@
     display: none;
   }
 }
+
+/* ===== Full filename cards: equal icon size fix ===== */
+
+/*
+ * Финальная геометрия карточек файлов:
+ * - одинаковые иконки;
+ * - полные имена без троеточия;
+ * - более широкие карточки на ПК;
+ * - одинаковая высота карточек в одной сетке;
+ * - телефон остаётся компактным и адаптивным.
+ */
+
+.file-manager-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.file-manager-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 188px;
+  padding: 16px 10px 13px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 72px minmax(72px, auto);
+  align-content: start;
+  justify-items: center;
+  gap: 12px;
+}
+
+.file-manager-item__icon {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  min-height: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.file-manager-item__icon svg {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  min-height: 72px;
+  display: block;
+}
+
+.file-manager-item__details {
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.file-manager-item__details strong {
+  width: 100%;
+  margin: 0;
+  display: block;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-align: center;
+  line-height: 1.18;
+}
+
+.file-manager-item__details small {
+  width: 100%;
+  margin-top: 5px;
+  display: block;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  text-align: center;
+}
+
+/*
+ * На широком экране слегка увеличиваем полезную ширину карточек,
+ * но не превращаем проводник в огромную плиточную сетку.
+ */
+@media (min-width: 1100px) {
+  .file-manager-items {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+}
+
+/*
+ * На телефоне одна карточка занимает доступную ширину —
+ * длинные названия читаются проще и не ломают сетку.
+ */
+@media (max-width: 768px) {
+  .file-manager-items {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .file-manager-item {
+    min-height: 150px;
+    padding: 14px 14px 12px;
+    grid-template-rows: 64px auto;
+    gap: 9px;
+  }
+
+  .file-manager-item__icon,
+  .file-manager-item__icon svg {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+  }
+
+  .file-manager-item__details {
+    min-height: 0;
+  }
+}
+
